@@ -52,6 +52,11 @@
           font-size: 18px;
           outline: none;
         }
+        select {
+          outline: none;
+          padding-left: 6px;
+          font-size: 18px;
+        }
       }
       .message {
         text-align: center;
@@ -59,7 +64,7 @@
         height: 16px;
         color: blue;
       }
-      .login-btn {
+      .register-btn {
         background-color: rgba(1, 144, 243);
         color: white;
         width: 300px;

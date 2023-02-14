@@ -1,0 +1,27 @@
+.mainlayout {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  position: relative;
+
+  .part1 {
+    width: 62px;
+    height: 100%;
+  }
+  .part2 {
+    width: 312px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1.5px solid var(--gray-blur);
+    .part3 {
+      height: 60px;
+      border-bottom: 1px solid gray;
+    }
+    .part4 {
+      flex: 1;
+    }
+  }
+  .part5 {
+    flex: 1;
+  }
+}

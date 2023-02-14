@@ -3,8 +3,11 @@ import classnames from "classnames/bind";
 import imageLink from "../../Images/link";
 import { useState, useRef, useEffect } from "react";
 import useText from "../../hooks/useText";
+import useAutoNavigate from "../../hooks/useAutoNavigate";
 import services from "../../services";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import userSlide from "../../redux/slides/user";
 
 const cx = classnames.bind(style);
 const eyeicon = {
@@ -12,12 +15,15 @@ const eyeicon = {
   off: " visibility_off",
 };
 function Login() {
+  useAutoNavigate();
+  let dispatch = useDispatch();
   const text = useText("login");
-  const navigate = useNavigate();
+  const codeText = useText("code");
   let passwordRef = useRef();
   let [eyeStatus, setEyeStatus] = useState("on");
   let [username, setUsername] = useState("");
   let [password, setPassword] = useState("");
+  let [message, setMessage] = useState("");
   let [loginBtnIsCanClick, setLoginBtnIsCanClick] = useState(false);
   useEffect(() => {
     if (username.length > 6 && password.length >= 6) {
@@ -39,9 +45,10 @@ function Login() {
         userName: username,
         password: password,
       });
-      console.log(data);
       if (data.isSuccess) {
-        navigate("/home");
+        dispatch(userSlide.actions.setUser({ user: data.data }));
+      } else {
+        setMessage(codeText[data.code]);
       }
     }
   }
@@ -78,12 +85,17 @@ function Login() {
               {eyeicon[eyeStatus]}
             </span>
           </div>
+          <h5 className={cx("message")}>{message}</h5>
           <button
             className={cx(["login-btn", !loginBtnIsCanClick && "cantclick"])}
             onClick={handleLoginBtnClick}
           >
             {text.loginwithpassword}
           </button>
+          <h5 className={cx("footer")}>
+            {text.noaccount}
+            <Link to="/register"> {text.registernewaccount} </Link>
+          </h5>
         </div>
       </div>
       <svg

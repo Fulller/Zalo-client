@@ -1,0 +1,20 @@
+.wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .backhome {
+    padding: 20px;
+    border-radius: 50px;
+    color: white;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    animation: autocolor 10s infinite;
+    img {
+      height: 100%;
+    }
+  }
+}

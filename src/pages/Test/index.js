@@ -6,20 +6,11 @@ import userSlide from "../../redux/slides/user";
 import settingSlide from "../../redux/slides/setting";
 
 function Test() {
-  let dispatch = useDispatch();
-  let user = useSelector(selector.user);
-  let setting = useSelector(selector.getSetting);
-  console.log(setting);
-
+  let param = useParams();
+  console.log(param);
   return (
     <div>
-      <button
-        onClick={() => {
-          dispatch(settingSlide.actions.changePage("Login"));
-        }}
-      >
-        dispatch
-      </button>
+      <h1>{param.ok}</h1>
     </div>
   );
 }

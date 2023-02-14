@@ -1,0 +1,32 @@
+.module {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .container {
+    width: 500px;
+    height: 300px;
+    background-color: white;
+    border-radius: 8px;
+    position: relative;
+
+    .closebtn {
+      position: absolute;
+      right: 0;
+      margin: 8px;
+      border-radius: 50%;
+      font-size: 30px;
+      color: rgb(90, 90, 90);
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}
+.hide {
+  display: none;
+}

@@ -10,7 +10,7 @@ function ReactRouter() {
             <Route
               path={route.path}
               element={route.element}
-              key={route.path}
+              key={index}
             ></Route>
           );
         })}

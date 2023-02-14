@@ -10,3 +10,47 @@
 a {
   text-decoration: none;
 }
+input {
+  outline: none;
+}
+:root {
+  --gray-blur: rgb(173, 173, 173);
+  --zmp-theme-color: #5094fa;
+  --zmp-theme-color-rgb: 0, 104, 255;
+  --zmp-theme-color-shade: #0057d6;
+  --zmp-theme-color-tint: #2980ff;
+  /* màu sắc của các component checkbook, radio, toggle, picker */
+  --zmp-checkbox-active-color-disabled: var(--zmp-theme-color-shade);
+  --zmp-radio-active-color-disabled: var(--zmp-theme-color-shade);
+  --zmp-toggle-active-color-disabled: var(--zmp-theme-color-shade);
+  --zmp-picker-action-button-hover-bg-color: var(--zmp-theme-color-shade);
+  /*màu sắc khi touched button typeName="primary"*/
+  --zmp-button-pressed-bg-color-primary: var(--zmp-theme-color-shade);
+  /* màu sắc của button có typeName="secondary"*/
+  --zmp-button-bg-color-secondary: #ffffff;
+  --zmp-button-pressed-bg-color-secondary: #ffffff;
+  --zmp-button-pressed-color-secondary: var(--zmp-theme-color);
+  --zmp-button-border-color-secondary: var(--zmp-theme-color);
+  /* màu sắc của floating action button*/
+  --zmp-fab-pressed-bg-color: var(--zmp-theme-color-shade);
+}
+/* Trường hợp Zalo Mini App có sử dụng dark theme*/
+:root.theme-dark,
+:root .theme-dark {
+  --zmp-theme-color: #0068ff;
+  --zmp-theme-color-rgb: 0, 104, 255;
+  --zmp-theme-color-shade: #0057d6;
+  --zmp-theme-color-tint: #2980ff;
+  --zmp-checkbox-active-color-disabled: var(--zmp-theme-color-shade);
+  --zmp-radio-active-color-disabled: var(--zmp-theme-color-shade);
+  --zmp-toggle-active-color-disabled: var(--zmp-theme-color-shade);
+  --zmp-picker-action-button-hover-bg-color: var(--zmp-theme-color-shade);
+  --zmp-button-pressed-bg-color-primary: var(--zmp-theme-color-shade);
+  --zmp-button-bg-color-secondary: #ffffff;
+  --zmp-button-pressed-bg-color-secondary: #ffffff;
+  --zmp-button-pressed-color-secondary: var(--zmp-theme-color);
+  --zmp-button-border-color-secondary: var(--zmp-theme-color);
+  --zmp-tabbar-fill-link-active-color: var(--zmp-theme-color);
+  --zmp-tabbar-fill-link-active-border-color: var(--zmp-theme-color);
+  --zmp-fab-pressed-bg-color: var(--zmp-theme-color-shade);
+}
