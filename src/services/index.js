@@ -23,4 +23,24 @@ export default {
       },
     }).then((data) => data.data);
   },
+  gettypefriends: function (body) {
+    return axios({
+      method: "get",
+      url: url.server.userAPI("/gettypefriends"),
+      params: {
+        userName: body.userName,
+        type: body.type || "friends",
+      },
+    }).then((data) => data.data);
+  },
+  addfriend: function (body) {
+    return axios({
+      method: "put",
+      url: url.server.userAPI("/addfriend"),
+      data: {
+        userName: body.userName,
+        userNameFriend: body.userNameFriend,
+      },
+    }).then((data) => data.data);
+  },
 };

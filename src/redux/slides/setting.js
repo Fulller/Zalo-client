@@ -3,14 +3,18 @@ import LocalStorare from "../../tools/localStorage";
 
 export default createSlice({
   name: "setting",
-  initialState: {
+  initialState: LocalStorare.get("setting", {
     language: "vi",
     module: {
       isShow: false,
       type: "",
       data: {},
     },
-  },
+    detailcontent: {
+      type: "",
+      data: {},
+    },
+  }),
   reducers: {
     setLanguage: (state, action) => {
       state.language = action.payload.language;
@@ -23,6 +27,11 @@ export default createSlice({
         type: action.payload?.type || "",
         data: action.payload?.data || {},
       };
+      LocalStorare.set("setting", state);
+      return state;
+    },
+    detailcontent: (state, action) => {
+      state.detailcontent = action.payload.detailcontent;
       LocalStorare.set("setting", state);
       return state;
     },

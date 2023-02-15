@@ -46,5 +46,8 @@ export default {
     nopage: {
       backhome: "Quay về trang chủ",
     },
+    navlist: {
+      requestfriends: "Danh sách kết bạn",
+    },
   },
 };

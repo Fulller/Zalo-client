@@ -8,9 +8,9 @@ function ReactRouter() {
         {routes.public.map((route, index) => {
           return (
             <Route
-              path={route.path}
-              element={route.element}
               key={index}
+              element={route.element}
+              path={route.path}
             ></Route>
           );
         })}
@@ -18,4 +18,5 @@ function ReactRouter() {
     </BrowserRouter>
   );
 }
+
 export default ReactRouter;

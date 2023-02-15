@@ -8,4 +8,7 @@ export default {
   module: (state) => {
     return state.setting.module;
   },
+  detailcontent: (state) => {
+    return state.setting.detailcontent;
+  },
 };
