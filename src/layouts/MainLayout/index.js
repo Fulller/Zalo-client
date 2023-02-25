@@ -3,10 +3,13 @@ import SearchBox from "./SearchBox";
 import style from "./Mainlayout.module.scss";
 import classNames from "classnames/bind";
 import Module from "../Module";
+import useAutoNavigate from "../../hooks/useAutoNavigate";
+import DetailContent from "../../pages/DetailContent";
 
 const cx = classNames.bind(style);
 function MainLayout({ elements }) {
-  let [NavList, DetailContent] = elements;
+  let [NavList] = elements;
+  useAutoNavigate();
   return (
     <div className={cx("mainlayout")}>
       <div className={cx("part1")}>

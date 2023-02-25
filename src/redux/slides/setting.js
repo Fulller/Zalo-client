@@ -14,6 +14,7 @@ export default createSlice({
       type: "",
       data: {},
     },
+    showinfocontent: false,
   }),
   reducers: {
     setLanguage: (state, action) => {
@@ -22,16 +23,17 @@ export default createSlice({
       return state;
     },
     setModule: (state, action) => {
-      state.module = {
-        isShow: action.payload?.isShow || false,
-        type: action.payload?.type || "",
-        data: action.payload?.data || {},
-      };
+      state.module = action.payload;
       LocalStorare.set("setting", state);
       return state;
     },
     detailcontent: (state, action) => {
-      state.detailcontent = action.payload.detailcontent;
+      state.detailcontent = action.payload;
+      LocalStorare.set("setting", state);
+      return state;
+    },
+    toggleShowinfocontent: (state, action) => {
+      state.showinfocontent = !state.showinfocontent;
       LocalStorare.set("setting", state);
       return state;
     },

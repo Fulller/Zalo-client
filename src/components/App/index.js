@@ -1,4 +1,4 @@
-import GlobalStyle from "../GlobalStyle";
+import Global from "../Global";
 import ReactRouter from "../ReactRouter";
 import { Provider } from "react-redux";
 import store from "../../redux/store";
@@ -6,9 +6,9 @@ import store from "../../redux/store";
 function App() {
   return (
     <Provider store={store}>
-      <GlobalStyle>
+      <Global>
         <ReactRouter></ReactRouter>
-      </GlobalStyle>
+      </Global>
     </Provider>
   );
 }

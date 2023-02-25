@@ -1,0 +1,72 @@
+.layout1 {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  header {
+    display: flex;
+    border-bottom: 1.5px solid var(--gray-blur);
+    height: 70px;
+    align-items: center;
+    padding: 0px 8px;
+
+    span {
+      padding: 0px 16px;
+    }
+    h4 {
+      font-weight: 500;
+    }
+  }
+  .main {
+    flex: 1;
+    overflow-y: scroll;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 12px;
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    &::-webkit-scrollbar-track {
+      padding: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+    }
+  }
+}
+.layout2 {
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  display: flex;
+
+  .left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .header {
+      height: 70px;
+      border-bottom: 1.5px solid var(--gray-blur);
+    }
+    .messages {
+      flex: 1;
+      height: calc(100% - 140px);
+    }
+    .input {
+      border-top: 1.5px solid var(--gray-blur);
+      height: 60px;
+    }
+  }
+  .right {
+    border-left: 1.5px solid var(--gray-blur);
+    width: 340px;
+    transition: all 0.5s;
+    .title {
+      height: 70px;
+      border-bottom: 1.5px solid var(--gray-blur);
+    }
+  }
+  .hideInfoContent {
+    display: none;
+  }
+}

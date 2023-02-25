@@ -48,7 +48,12 @@ function SearchBox() {
           <button
             className={cx("add-friend")}
             onClick={() =>
-              dispatch(settingSlide.actions.setModule({ isShow: true }))
+              dispatch(
+                settingSlide.actions.setModule({
+                  isShow: true,
+                  type: "addfriend",
+                })
+              )
             }
           >
             <span className="material-symbols-rounded">person_add</span>

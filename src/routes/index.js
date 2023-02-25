@@ -1,10 +1,9 @@
 import Login from "../pages/Login";
-import Register from "../pages/Register";
 import NoPage from "../pages/NoPage";
+import Register from "../pages/Register";
 import MainLayout from "../layouts/MainLayout";
-import PhoneBookNav from "../pages/components/PhonebookNav";
-import DetailContent from "../pages/components/DetailContent";
-import MessageHistoryNav from "../pages/components/MessageHistoryNav";
+import PhoneBookNav from "../pages/NavList/Phonebook";
+import MessageHistoryNav from "../pages/NavList/MessagesHistory";
 
 function route(path, Element, Layout) {
   this.path = path;
@@ -18,9 +17,9 @@ export default {
   public: [
     new route("login", Login),
     new route("register", Register),
-    new route("", [MessageHistoryNav, DetailContent], MainLayout),
-    new route("message", [MessageHistoryNav, DetailContent], MainLayout),
-    new route("phonebook", [PhoneBookNav, DetailContent], MainLayout),
+    new route("", [MessageHistoryNav], MainLayout),
+    new route("message", [MessageHistoryNav], MainLayout),
+    new route("phonebook", [PhoneBookNav], MainLayout),
     new route("*", NoPage),
   ],
 };

@@ -6,4 +6,5 @@ export default {
       return serverurl + "/api/user" + url;
     },
   },
+  socket: "http://localhost:3002",
 };

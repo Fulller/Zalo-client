@@ -43,4 +43,53 @@ export default {
       },
     }).then((data) => data.data);
   },
+  wanttobefriend: function (body) {
+    return axios({
+      method: "put",
+      url: url.server.userAPI("/wanttobefriend"),
+      data: {
+        userName: body.userName,
+        userNameFriend: body.userNameFriend,
+      },
+    }).then((data) => data.data);
+  },
+  unfriend: function (body) {
+    return axios({
+      method: "put",
+      url: url.server.userAPI("/unfriend"),
+      data: {
+        userName: body.userName,
+        userNameFriend: body.userNameFriend,
+      },
+    }).then((data) => data.data);
+  },
+  sendmessage: function (body) {
+    return axios({
+      method: "post",
+      url: url.server.userAPI("/sendmessage"),
+      data: {
+        conversationId: body.conversationId,
+        content: body.content,
+        sender: body.sender,
+      },
+    }).then((data) => data.data);
+  },
+  getconversation: function (body) {
+    return axios({
+      method: "get",
+      url: url.server.userAPI("/getconversation"),
+      params: {
+        conversationId: body.conversationId,
+      },
+    }).then((data) => data.data);
+  },
+  findfriend: function (body) {
+    return axios({
+      method: "get",
+      url: url.server.userAPI("/findfriend"),
+      params: {
+        userNameFriend: body.userNameFriend,
+      },
+    }).then((data) => data.data);
+  },
 };
