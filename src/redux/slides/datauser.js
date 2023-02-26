@@ -8,6 +8,7 @@ export default createSlice({
     groups: [],
     requestfriends: [],
     wanttobefriends: [],
+    conversations: {},
   },
   reducers: {
     setFriends: (state, action) => {
@@ -36,6 +37,15 @@ export default createSlice({
       state.friends = state.friends.filter((friend) => {
         return friend.userName != action.payload.userName;
       });
+      return state;
+    },
+    setConversations: (state, action) => {
+      state.conversations = action.payload;
+      return state;
+    },
+    setConversation: (state, action) => {
+      state.conversations[action.payload.conversationId] =
+        action.payload.conversation;
       return state;
     },
   },

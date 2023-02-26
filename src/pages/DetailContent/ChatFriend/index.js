@@ -11,6 +11,7 @@ import Messages from "../components/Messages";
 const cxlayout = classNames.bind(layoutStyle);
 function ChatFriend({ data }) {
   let showinfocontent = useSelector(selector.showinfocontent);
+
   return (
     <div className={cxlayout("layout2")}>
       <div className={cxlayout("left")}>

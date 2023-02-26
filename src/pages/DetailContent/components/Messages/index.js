@@ -1,27 +1,26 @@
 import style from "./Messages.module.scss";
 import classNames from "classnames/bind";
-import services from "../../../../services";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import mergeUserName from "../../../../tools/mergeUserName";
+import { useSelector } from "react-redux";
 
 const cx = classNames.bind(style);
 function Messages({ data }) {
-  let [conversation, setConversation] = useState(null);
   let dataMessages = data.data;
   let conversationId =
     data.type == "chat-friend"
       ? mergeUserName(dataMessages.user.userName, dataMessages.friend.userName)
       : "";
+  let conversation =
+    useSelector((state) => {
+      return state.datauser.conversations[conversationId];
+    }) || null;
+  let messagesRef = useRef();
   useEffect(() => {
-    (async function () {
-      let response = await services.getconversation({ conversationId });
-      if (response.isSuccess) {
-        setConversation(response.data);
-      }
-    })();
-  }, []);
+    messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
+  });
   return (
-    <div className={cx("messages")}>
+    <div className={cx("messages")} ref={messagesRef}>
       {conversation &&
         conversation.messages.map((message, index) => {
           let avatar = conversation.members.find((member) => {

@@ -1,26 +1,47 @@
 import io from "socket.io-client";
 import url from "../tools/url";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import selector from "../redux/selector";
+import services from "../services";
+import datauserSlide from "../redux/slides/datauser";
 
-function useSocket() {
-  let [socket, setSocket] = useState(io(url.socket));
+function useSocket(socket) {
+  let dispatch = useDispatch();
   let user = useSelector(selector.user);
-  useEffect(() => {
-    setSocket(io(url.socket));
-  }, []);
+  const [isConnected, setIsConnected] = useState(socket.connected);
+  const [lastPong, setLastPong] = useState(null);
   useEffect(() => {
     socket.on("connect", () => {
-      console.log("This Client connect with socket");
+      socket.emit("joinrooms", user.roomIds);
+      setIsConnected(true);
     });
-    socket.emit("joinrooms", user?.roomIds);
-    return function () {
+    socket.on("disconnect", () => {
+      setIsConnected(false);
+    });
+    socket.on("pong", () => {
+      setLastPong(new Date().toISOString());
+    });
+
+    socket.on("receiveMessageFromFriend", async (data) => {
+      let response = await services.getconversation({
+        conversationId: data.conversationId,
+      });
+      if (response.isSuccess) {
+        dispatch(
+          datauserSlide.actions.setConversation({
+            conversationId: data.conversationId,
+            conversation: response.data,
+          })
+        );
+      }
+    });
+    return () => {
       socket.off("connect");
       socket.off("disconnect");
       socket.off("pong");
     };
-  }, [user]);
-  return socket;
+  }, []);
+  return 1;
 }
 export default useSocket;

@@ -13,6 +13,9 @@ a {
 input {
   outline: none;
 }
+img {
+  object-fit: cover;
+}
 :root {
   --gray-blur: rgb(173, 173, 173);
   --zmp-theme-color: #5094fa;
