@@ -9,6 +9,7 @@ export default createSlice({
     requestfriends: [],
     wanttobefriends: [],
     conversations: {},
+    messageshistory: [],
   },
   reducers: {
     setFriends: (state, action) => {
@@ -46,6 +47,17 @@ export default createSlice({
     setConversation: (state, action) => {
       state.conversations[action.payload.conversationId] =
         action.payload.conversation;
+      return state;
+    },
+    setMessagesHistory: (state, action) => {
+      state.messageshistory = action.payload;
+      return state;
+    },
+    updateMessagesHistory: (state, action) => {
+      state.messageshistory = state.messageshistory.filter((mh) => {
+        return mh != action.payload;
+      });
+      state.messageshistory.unshift(action.payload);
       return state;
     },
   },

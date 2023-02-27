@@ -3,10 +3,13 @@ import classNames from "classnames/bind";
 import { useState, useEffect, useRef } from "react";
 import mergeUserName from "../../../../tools/mergeUserName";
 import { useSelector } from "react-redux";
+import selector from "../../../../redux/selector";
+import Image from "../../../../Images";
 
 const cx = classNames.bind(style);
 function Messages({ data }) {
   let dataMessages = data.data;
+  let showinfocontent = useSelector(selector.showinfocontent);
   let conversationId =
     data.type == "chat-friend"
       ? mergeUserName(dataMessages.user.userName, dataMessages.friend.userName)
@@ -43,9 +46,11 @@ function Messages({ data }) {
               ])}
             >
               <div className={cx(["message", ...messageType])}>
-                <img className={cx("avatar")} src={avatar}></img>
+                <Image isUser className={cx("avatar")} src={avatar}></Image>
                 <div className={cx("content")}>
-                  <p>{message.content}</p>
+                  <p className={cx(!showinfocontent && "wide")}>
+                    {message.content}
+                  </p>
                   <div className={cx("time")}>{time}</div>
                 </div>
               </div>

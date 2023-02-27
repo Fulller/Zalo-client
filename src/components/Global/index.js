@@ -37,10 +37,15 @@ function Global({ children }) {
           conversations[conversationId] = response?.data;
         }
       }
+      let messageshistory = await services.getoptional({
+        userName: user.userName,
+        optional: "messagesHistory",
+      });
       dispatch(datauserSlide.actions.setFriends(friends.data));
       dispatch(datauserSlide.actions.setRequestFriends(requesFriends.data));
       dispatch(datauserSlide.actions.setWanttobeFriends(wanttobeFriends.data));
       dispatch(datauserSlide.actions.setConversations(conversations));
+      dispatch(datauserSlide.actions.setMessagesHistory(messageshistory.data));
     })();
   }, [user]);
 

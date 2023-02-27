@@ -38,6 +38,11 @@ function InputText({ data: { data } }) {
         spellCheck="false"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.code == "Enter") {
+            sendMessage();
+          }
+        }}
       ></input>
       <button
         className={cx(!message.trim() && "hasnotmessage")}

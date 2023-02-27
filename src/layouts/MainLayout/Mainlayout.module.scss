@@ -18,6 +18,23 @@
     }
     .part4 {
       flex: 1;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      border-top: 1.5px solid var(--gray-blur);
+
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #00000045;
+        border-radius: 20px;
+      }
+      &::-webkit-scrollbar-thumb:hover {
+        background: #0000007a;
+      }
     }
   }
   .part5 {

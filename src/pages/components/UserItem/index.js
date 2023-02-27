@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import selector from "../../../redux/selector";
 import { useEffect, useState } from "react";
 import services from "../../../services";
+import Image from "../../../Images";
 
 import MoreButton from "../MoreButton";
 
@@ -18,13 +19,14 @@ function UserItem({
   hasButton = false,
   clickToChat = false,
   moreButton = false,
+  hoverMoreButton = false,
+  lastMessage = null,
 }) {
   let text = useText("detailcontent");
   let relationship = useRelationship(data.userName);
   let [dataButton, setDatabutton] = useState({});
   let user = useSelector(selector.user);
   let dispatch = useDispatch();
-
   function handleClickToChat() {
     dispatch(
       settingSlide.actions.detailcontent({
@@ -88,9 +90,17 @@ function UserItem({
         }
       }}
     >
-      <img src={data.avatar}></img>
+      <Image isUser src={data.avatar}></Image>
       <div className={cx("content")}>
-        <h4>{data.showName}</h4>
+        <div className={cx("showname_lastmessage")}>
+          <h4>{data.showName}</h4>
+          {lastMessage && (
+            <p>
+              {lastMessage.sender == user.userName ? "Bạn" : data.showName}:{" "}
+              {lastMessage.content}
+            </p>
+          )}
+        </div>
         {hasButton && (
           <button
             className={cx(["button", dataButton.isDisable && "disable"])}
@@ -106,6 +116,16 @@ function UserItem({
               friend: data,
             }}
           ></MoreButton>
+        )}
+        {hoverMoreButton && (
+          <div className={cx("hoverMoreButton")}>
+            <MoreButton
+              data={{
+                user: user,
+                friend: data,
+              }}
+            ></MoreButton>
+          </div>
         )}
       </div>
     </div>

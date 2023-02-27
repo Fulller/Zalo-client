@@ -92,4 +92,24 @@ export default {
       },
     }).then((data) => data.data);
   },
+  updatamessageshistory: function (body) {
+    return axios({
+      method: "put",
+      url: url.server.userAPI("/updatamessageshistory"),
+      data: {
+        userName: body.userName,
+        conversationId: body.conversationId,
+      },
+    }).then((data) => data.data);
+  },
+  getoptional: function (body) {
+    return axios({
+      method: "get",
+      url: url.server.userAPI("/getoptional"),
+      params: {
+        userName: body.userName,
+        optional: body.optional,
+      },
+    }).then((data) => data.data);
+  },
 };

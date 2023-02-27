@@ -2,11 +2,11 @@
   background-color: rgb(186, 186, 233);
   height: 100%;
   overflow-y: scroll;
-  padding-left: 16px;
-  padding-right: 8px;
+
+  padding: 32px 8px 32px 16px;
 
   &::-webkit-scrollbar {
-    width: 10px;
+    width: 6px;
   }
   &::-webkit-scrollbar-track {
     background: transparent;
@@ -37,6 +37,13 @@
         padding: 12px;
         border-radius: 8px;
 
+        p {
+          max-width: 300px;
+          word-wrap: break-word;
+        }
+        p.wide {
+          max-width: 600px;
+        }
         .time {
           color: gray;
           font-size: 14px;

@@ -28,6 +28,13 @@ function useSocket(socket) {
         conversationId: data.conversationId,
       });
       if (response.isSuccess) {
+        await services.updatamessageshistory({
+          userName: user.userName,
+          conversationId: data.conversationId,
+        });
+        dispatch(
+          datauserSlide.actions.updateMessagesHistory(data.conversationId)
+        );
         dispatch(
           datauserSlide.actions.setConversation({
             conversationId: data.conversationId,

@@ -17,7 +17,15 @@ function Navbar() {
   return (
     <div className={cx("navbar")}>
       <Tippy content={<span>{userData?.showName}</span>} placement="left">
-        <img className={cx("avatar")} src={userData?.avatar}></img>
+        <img
+          isUser
+          className={cx("avatar")}
+          src={userData?.avatar}
+          onError={(e) =>
+            (e.target.src =
+              "https://images.assetsdelivery.com/compings_v2/koblizeek/koblizeek2001/koblizeek200100050.jpg")
+          }
+        ></img>
       </Tippy>
       <div className={cx("wrappernav")}>
         <div className={cx(["nav-part", "nav-top"])}>

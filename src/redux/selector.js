@@ -27,5 +27,11 @@ export default {
     wanttobefriends: function (state) {
       return state.datauser.wanttobefriends;
     },
+    conversations: function (state) {
+      return state.datauser.conversations;
+    },
+    messageshistory: function (state) {
+      return state.datauser.messageshistory;
+    },
   },
 };

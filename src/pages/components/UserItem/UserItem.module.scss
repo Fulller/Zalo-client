@@ -5,6 +5,11 @@
   transition: all 0.2s;
   &:hover {
     background-color: rgba(0, 0, 0, 0.05);
+    .content {
+      .hoverMoreButton {
+        display: block;
+      }
+    }
   }
   img {
     width: 50px;
@@ -23,8 +28,23 @@
 
     border-bottom: 1.5px solid rgba(128, 128, 128, 0.3);
 
-    h4 {
-      font-weight: 500;
+    .showname_lastmessage {
+      display: flex;
+      flex-direction: column;
+
+      h4 {
+        font-weight: 500;
+        padding: 4px 0px;
+      }
+      p {
+        color: rgb(118, 102, 102);
+        font-size: 15px;
+
+        overflow-y: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+      }
     }
     .button {
       cursor: pointer;
@@ -46,10 +66,19 @@
         background-color: rgba(128, 128, 128, 0.8);
       }
     }
+    .hoverMoreButton {
+      display: none;
+    }
   }
 }
 .type2 {
   border-radius: 8px;
+  .content {
+    border-bottom: none;
+  }
+}
+
+.type3 {
   .content {
     border-bottom: none;
   }
