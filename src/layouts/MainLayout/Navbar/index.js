@@ -16,9 +16,13 @@ function Navbar() {
   let text = useText("mainlayout");
   return (
     <div className={cx("navbar")}>
-      <Tippy content={<span>{userData?.showName}</span>} placement="left">
+      <Tippy
+        delay={[500, 0]}
+        content={<span>{userData?.showName}</span>}
+        placement="left"
+      >
         <img
-          isUser
+          isuser
           className={cx("avatar")}
           src={userData?.avatar}
           onError={(e) =>

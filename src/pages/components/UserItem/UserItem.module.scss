@@ -9,6 +9,9 @@
       .hoverMoreButton {
         display: block;
       }
+      .timeAgo {
+        display: none;
+      }
     }
   }
   img {
@@ -37,14 +40,22 @@
         padding: 4px 0px;
       }
       p {
-        color: rgb(118, 102, 102);
-        font-size: 15px;
+        color: rgb(151, 147, 147);
+        font-size: 14px;
 
         overflow-y: hidden;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
       }
+    }
+    .timeAgo {
+      font-size: 12px;
+      color: gray;
+      font-weight: 500;
+      min-width: 50px;
+      text-align: end;
+      transform: translateY(-8px);
     }
     .button {
       cursor: pointer;
@@ -70,6 +81,9 @@
       display: none;
     }
   }
+}
+.active {
+  background-color: rgba(3, 3, 245, 0.1);
 }
 .type2 {
   border-radius: 8px;

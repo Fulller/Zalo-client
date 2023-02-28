@@ -13,9 +13,13 @@
 
   .result {
     margin-top: 24px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    h4 {
-      text-align: center;
+    & > div {
+      width: 100%;
     }
   }
 }

@@ -48,8 +48,10 @@ function Addfriend() {
         <div className={cx("result")}>
           {result ? (
             <UserItem type="2" data={result} hasButton></UserItem>
-          ) : (
+          ) : userName ? (
             <h4>{text.cantfinduser}</h4>
+          ) : (
+            <h4>{text.plsenterusername}</h4>
           )}
         </div>
       </div>

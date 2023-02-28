@@ -22,4 +22,10 @@
   .hasnotmessage {
     opacity: 0;
   }
+
+  border-top: 1.5px solid var(--gray-blur);
+
+  &:focus-within {
+    border-top: 1.5px solid rgb(115, 115, 243);
+  }
 }

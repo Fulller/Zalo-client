@@ -8,13 +8,25 @@ import io from "socket.io-client";
 import url from "../../tools/url";
 import mergeUserName from "../../tools/mergeUserName";
 import useSocket from "../../hooks/useSocket";
+import TimeAgo from "javascript-time-ago";
+import vi from "javascript-time-ago/locale/vi";
+import en from "javascript-time-ago/locale/en";
 
 const socket = io(url.socket);
-
+let timeAgo;
 function Global({ children }) {
   let user = useSelector(selector.user);
   let dispatch = useDispatch();
+  let language = useSelector(selector.language);
   useSocket(socket);
+  useEffect(() => {
+    if (language == "vi") {
+      TimeAgo.addDefaultLocale(vi);
+    } else {
+      TimeAgo.addDefaultLocale(en);
+    }
+    timeAgo = new TimeAgo("en-US");
+  }, []);
   useEffect(() => {
     (async () => {
       let friends = await services.gettypefriends({
@@ -51,5 +63,5 @@ function Global({ children }) {
 
   return <>{children}</>;
 }
-export { socket };
+export { socket, timeAgo };
 export default Global;

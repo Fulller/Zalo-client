@@ -1,10 +1,10 @@
-function Image({ src, className, isUser }) {
+function Image({ src, className, isuser }) {
   return (
     <img
       className={className}
       src={src}
       onError={(e) => {
-        if (isUser) {
+        if (isuser) {
           e.target.src =
             "https://images.assetsdelivery.com/compings_v2/koblizeek/koblizeek2001/koblizeek200100050.jpg";
         } else {

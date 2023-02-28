@@ -29,7 +29,7 @@ function Messages({ data }) {
           let avatar = conversation.members.find((member) => {
             return member.userName == message.sender;
           })?.avatar;
-          let time = message.createdAt.slice(11, 16);
+          let time = message.createdAt.slice(11, 16).split(":");
           let messageType = [];
           if (message.sender != conversation.messages[index - 1]?.sender) {
             messageType.push("type1");
@@ -46,12 +46,18 @@ function Messages({ data }) {
               ])}
             >
               <div className={cx(["message", ...messageType])}>
-                <Image isUser className={cx("avatar")} src={avatar}></Image>
+                <Image
+                  isuser="true"
+                  className={cx("avatar")}
+                  src={avatar}
+                ></Image>
                 <div className={cx("content")}>
                   <p className={cx(!showinfocontent && "wide")}>
                     {message.content}
                   </p>
-                  <div className={cx("time")}>{time}</div>
+                  <div className={cx("time")}>
+                    {(time[0] * 1 + 7) % 24}:{time[1]}
+                  </div>
                 </div>
               </div>
             </div>

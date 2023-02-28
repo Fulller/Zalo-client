@@ -63,6 +63,7 @@ export default {
       infoconversation: "Thông tin hội thoại",
       inputmesageto: "Nhập tin nhắn tới ",
       send: "GỬI",
+      you: "Bạn",
     },
     module: {
       cantfinduser: "Không tìm thấy người dùng",
@@ -70,6 +71,7 @@ export default {
       no: "Không",
       remove: "Xóa",
       outlistfriend: "khỏi danh sách bạn bè ?",
+      plsenterusername: "Hãy nhập username cần kết bạn !",
     },
     popper: {
       watchinfo: "Xem thông tin",

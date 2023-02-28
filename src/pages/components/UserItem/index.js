@@ -9,8 +9,8 @@ import selector from "../../../redux/selector";
 import { useEffect, useState } from "react";
 import services from "../../../services";
 import Image from "../../../Images";
-
 import MoreButton from "../MoreButton";
+import { timeAgo } from "../.../../../../components/Global";
 
 const cx = classNames.bind(style);
 function UserItem({
@@ -21,6 +21,7 @@ function UserItem({
   moreButton = false,
   hoverMoreButton = false,
   lastMessage = null,
+  active,
 }) {
   let text = useText("detailcontent");
   let relationship = useRelationship(data.userName);
@@ -38,6 +39,7 @@ function UserItem({
       })
     );
   }
+
   useEffect(() => {
     let title = "";
     let handleClick = function () {};
@@ -81,7 +83,7 @@ function UserItem({
   }, [relationship]);
   return (
     <div
-      className={cx(["useritem", "type" + type])}
+      className={cx(["useritem", "type" + type, active && "active"])}
       onClick={(e) => {
         if (clickToChat || relationship == "friend") {
           if (!e.target.closest("button")) {
@@ -90,17 +92,25 @@ function UserItem({
         }
       }}
     >
-      <Image isUser src={data.avatar}></Image>
+      <Image isuser="true" src={data.avatar}></Image>
       <div className={cx("content")}>
         <div className={cx("showname_lastmessage")}>
           <h4>{data.showName}</h4>
           {lastMessage && (
             <p>
-              {lastMessage.sender == user.userName ? "Bạn" : data.showName}:{" "}
+              {lastMessage.sender == user.userName && `${text.you}: `}
               {lastMessage.content}
             </p>
           )}
         </div>
+        {lastMessage && (
+          <p className={cx("timeAgo")}>
+            {timeAgo
+              .format(new Date(lastMessage.createdAt))
+              .replace(" trước", "")
+              .replace(" ago", "")}
+          </p>
+        )}
         {hasButton && (
           <button
             className={cx(["button", dataButton.isDisable && "disable"])}

@@ -2,10 +2,11 @@ import { useEffect } from "react";
 import useText from "../../../hooks/useText";
 
 let navitem = class {
-  constructor(icon, link, hovertext) {
+  constructor(icon, link, hovertext, handle) {
     this.icon = icon;
     this.link = link;
     this.hovertext = hovertext;
+    this.handle = handle;
   }
 };
 function useNavData() {
