@@ -4,33 +4,50 @@ import useNavData from "./useNavData";
 import { Link } from "react-router-dom";
 import useUserData from "../../../hooks/useUserData";
 import Tippy from "@tippyjs/react";
+import HeadLess from "@tippyjs/react/headless";
 import "tippy.js/dist/tippy.css";
 import useText from "../../../hooks/useText";
 import { useHref } from "react-router-dom";
+import { useState } from "react";
+import UserPopper from "../../../components/Poppers/UserPopper";
+import SettingPoper from "../../../components/Poppers/SettingPopper";
 
 const cx = classNames.bind(style);
 function Navbar() {
+  let [visibleUserPopper, setVisibleUserPopper] = useState(false);
+  let [visibleSettingPopper, setVisileSettingPopper] = useState(false);
   let data = useNavData();
   let href = useHref();
   let userData = useUserData();
   let text = useText("mainlayout");
   return (
     <div className={cx("navbar")}>
-      <Tippy
-        delay={[500, 0]}
-        content={<span>{userData?.showName}</span>}
-        placement="left"
+      <HeadLess
+        visible={visibleUserPopper}
+        placement="right-end"
+        interactive={true}
+        render={() => {
+          return <UserPopper></UserPopper>;
+        }}
+        onClickOutside={() => setVisibleUserPopper(false)}
       >
-        <img
-          isuser
-          className={cx("avatar")}
-          src={userData?.avatar}
-          onError={(e) =>
-            (e.target.src =
-              "https://images.assetsdelivery.com/compings_v2/koblizeek/koblizeek2001/koblizeek200100050.jpg")
-          }
-        ></img>
-      </Tippy>
+        <Tippy
+          delay={[500, 0]}
+          content={<span>{userData?.showName}</span>}
+          placement="left"
+        >
+          <img
+            isuser
+            className={cx("avatar")}
+            src={userData?.avatar}
+            onError={(e) =>
+              (e.target.src =
+                "https://images.assetsdelivery.com/compings_v2/koblizeek/koblizeek2001/koblizeek200100050.jpg")
+            }
+            onClick={() => setVisibleUserPopper(true)}
+          ></img>
+        </Tippy>
+      </HeadLess>
       <div className={cx("wrappernav")}>
         <div className={cx(["nav-part", "nav-top"])}>
           {data.top.map((navitemdata) => {
@@ -74,19 +91,31 @@ function Navbar() {
               </Tippy>
             );
           })}
-          <Tippy
-            delay={[500, 0]}
+          <HeadLess
             key={Math.random()}
-            content={<span>{text.setting}</span>}
-            placement="left"
+            visible={visibleSettingPopper}
+            placement="top-start"
+            interactive={true}
+            render={() => {
+              return <SettingPoper></SettingPoper>;
+            }}
+            onClickOutside={() => setVisileSettingPopper(false)}
           >
-            <div className={cx("navitem")}>
-              <span className="material-symbols-outlined">settings</span>
-            </div>
-          </Tippy>
+            <Tippy
+              delay={[500, 0]}
+              content={<span>{text.setting}</span>}
+              placement="left"
+            >
+              <div
+                className={cx("navitem")}
+                onClick={() => setVisileSettingPopper(true)}
+              >
+                <span className="material-symbols-outlined">settings</span>
+              </div>
+            </Tippy>
+          </HeadLess>
         </div>
       </div>
-      <div className={cx("nav-bottom")}></div>
     </div>
   );
 }

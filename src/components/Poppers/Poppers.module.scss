@@ -1,0 +1,38 @@
+.popper {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  padding: 8px 0px;
+  .title {
+    padding: 8px 16px;
+    padding-bottom: 16px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .line {
+    height: 1px;
+    margin: 4px 16px;
+    background-color: var(--gray-blur);
+  }
+  .popper-item {
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+
+    .icon {
+      padding-right: 8px;
+      background-color: transparent;
+      span {
+        color: rgba(0, 0, 0, 0.9);
+      }
+    }
+    .title-item {
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.9);
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+  }
+}

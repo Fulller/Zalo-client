@@ -77,6 +77,11 @@ export default {
       watchinfo: "Xem thông tin",
       namechangereminder: "Đổi tên gợi nhớ",
       removefriend: "Xóa bạn",
+      infoofyou: "Hồ sơ của bạn",
+      infoaccount: "Thông tin tài khoản",
+      setting: "Cài đặt",
+      logout: "Đăng xuất",
+      language: "Ngôn ngữ",
     },
   },
 };
