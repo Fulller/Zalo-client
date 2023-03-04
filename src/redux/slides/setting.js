@@ -1,22 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 import LocalStorare from "../../tools/localStorage";
 
+let initialState = {
+  language: "vi",
+  module: {
+    isShow: false,
+    type: "",
+    data: {},
+  },
+  detailcontent: {
+    type: "",
+    data: {},
+  },
+  showinfocontent: false,
+};
 export default createSlice({
   name: "setting",
-  initialState: LocalStorare.get("setting", {
-    language: "vi",
-    module: {
-      isShow: false,
-      type: "",
-      data: {},
-    },
-    detailcontent: {
-      type: "",
-      data: {},
-    },
-    showinfocontent: false,
-  }),
+  initialState: LocalStorare.get("setting", initialState),
   reducers: {
+    setDefault: (state, action) => {
+      state = initialState;
+      return state;
+    },
     setLanguage: (state, action) => {
       state.language = action.payload.language;
       LocalStorare.set("setting", state);

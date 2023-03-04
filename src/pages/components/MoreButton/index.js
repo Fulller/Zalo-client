@@ -25,6 +25,16 @@ function MoreButton({ data: { user, friend } }) {
       })
     );
   }
+  function handleClickShowInfoUser() {
+    setVisible(false);
+    dispatch(
+      settingSlide.actions.setModule({
+        isShow: true,
+        type: "infouser",
+        data: friend,
+      })
+    );
+  }
   return (
     <Headless
       visible={visible}
@@ -33,7 +43,7 @@ function MoreButton({ data: { user, friend } }) {
       render={() => {
         return (
           <div className={cx("popper")}>
-            <button>{text.watchinfo}</button>
+            <button onClick={handleClickShowInfoUser}>{text.watchinfo}</button>
             <button>{text.namechangereminder}</button>
             <button className={cx("btn-clear")} onClick={handleClickClearBtn}>
               {text.removefriend}

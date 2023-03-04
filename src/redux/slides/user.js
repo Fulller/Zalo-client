@@ -10,5 +10,10 @@ export default createSlice({
       LocalStorare.set("user", state);
       return state;
     },
+    setDefault: (state, action) => {
+      state = null;
+      LocalStorare.set("user", state);
+      return state;
+    },
   },
 });

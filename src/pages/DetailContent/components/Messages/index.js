@@ -9,6 +9,7 @@ import Image from "../../../../Images";
 const cx = classNames.bind(style);
 function Messages({ data }) {
   let dataMessages = data.data;
+  let friendsMap = useSelector(selector.datauser.friendsMap);
   let showinfocontent = useSelector(selector.showinfocontent);
   let conversationId =
     data.type == "chat-friend"
@@ -26,9 +27,10 @@ function Messages({ data }) {
     <div className={cx("messages")} ref={messagesRef}>
       {conversation &&
         conversation.messages.map((message, index) => {
-          let avatar = conversation.members.find((member) => {
+          let sender = conversation.members.find((member) => {
             return member.userName == message.sender;
-          })?.avatar;
+          });
+          let avatar = friendsMap[sender.userName]?.avatar;
           let time = message.createdAt.slice(11, 16).split(":");
           let messageType = [];
           if (message.sender != conversation.messages[index - 1]?.sender) {

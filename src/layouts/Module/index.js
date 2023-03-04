@@ -6,6 +6,7 @@ import selector from "../../redux/selector";
 
 import Addfriend from "./Addfriend";
 import Confirm from "./Confirm";
+import InfoUser from "./InfoUser";
 
 const cx = classNames.bind(style);
 function Module() {
@@ -17,6 +18,8 @@ function Module() {
         return <Addfriend></Addfriend>;
       case "confirm":
         return <Confirm data={module.data}></Confirm>;
+      case "infouser":
+        return <InfoUser data={module.data}></InfoUser>;
       default:
         return <></>;
     }

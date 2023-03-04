@@ -1,15 +1,18 @@
 import style from "./Confirm.module.scss";
 import classNames from "classnames/bind";
-import settingSlide from "../../../redux/slides/setting";
 import { useDispatch } from "react-redux";
+import settingSlide from "../../../redux/slides/setting";
 import datauserSlide from "../../../redux/slides/datauser";
+import userSlide from "../../../redux/slides/user";
 import useText from "../../../hooks/useText";
 import services from "../../../services";
+import { useNavigate } from "react-router-dom";
 
 const cx = classNames.bind(style);
 function Confirm({ data }) {
   let dispatch = useDispatch();
   let text = useText("module");
+  let navigate = useNavigate();
   const dataTypes = {
     unfriend: {
       title: text.confirm,
@@ -20,6 +23,10 @@ function Confirm({ data }) {
           {text.outlistfriend}
         </>
       ),
+      text: {
+        no: text.no,
+        yes: text.remove,
+      },
       handle: async function () {
         let response = await services.unfriend({
           userName: data.user.userName,
@@ -31,6 +38,21 @@ function Confirm({ data }) {
             datauserSlide.actions.unfriend({ userName: data.friend.userName })
           );
         }
+        closeModule();
+      },
+    },
+    logout: {
+      title: text.confirm,
+      content: <>{text.youwantlogout}</>,
+      text: {
+        no: text.no,
+        yes: text.logout,
+      },
+      handle: async function () {
+        dispatch(userSlide.actions.setDefault());
+        dispatch(datauserSlide.actions.setDefault());
+        dispatch(settingSlide.actions.setDefault());
+        navigate("/login");
         closeModule();
       },
     },
@@ -49,10 +71,10 @@ function Confirm({ data }) {
         <p>{dataTypes[data.type].content}</p>
         <div className={cx("buttons")}>
           <button className={cx("disagree")} onClick={closeModule}>
-            {text.no}
+            {dataTypes[data.type].text.no}
           </button>
           <button className={cx("agree")} onClick={dataTypes[data.type].handle}>
-            {text.remove}
+            {dataTypes[data.type].text.yes}
           </button>
         </div>
       </div>

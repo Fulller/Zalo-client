@@ -72,6 +72,8 @@ export default {
       remove: "Xóa",
       outlistfriend: "khỏi danh sách bạn bè ?",
       plsenterusername: "Hãy nhập username cần kết bạn !",
+      youwantlogout: "Bạn có muốn đăng xuất khỏi Zalo?",
+      logout: "Đăng xuất",
     },
     popper: {
       watchinfo: "Xem thông tin",

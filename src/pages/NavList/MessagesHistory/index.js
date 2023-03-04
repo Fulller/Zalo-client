@@ -10,6 +10,7 @@ import { useEffect } from "react";
 const cx = classNames.bind(style);
 function MessagesHistory() {
   let user = useSelector(selector.user);
+  let friendsMap = useSelector(selector.datauser.friendsMap);
   let detailcontent = useSelector(selector.detailcontent);
   let dispatch = useDispatch();
   let conversations = useSelector(selector.datauser.conversations);
@@ -40,6 +41,7 @@ function MessagesHistory() {
           let friend = conversation?.members.find((member) => {
             return member.userName != user.userName;
           });
+          friend = friendsMap[friend.userName];
           let isActive =
             detailcontent?.type == "chat-friend" &&
             detailcontent?.data?.friend?.userName == friend?.userName;

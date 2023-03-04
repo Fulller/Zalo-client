@@ -33,6 +33,11 @@ function Global({ children }) {
         userName: user.userName,
         type: "friends",
       });
+      let friendsMap = {};
+      friendsMap[user.userName] = user;
+      for (let friend of friends.data) {
+        friendsMap[friend.userName] = friend;
+      }
       let requesFriends = await services.gettypefriends({
         userName: user.userName,
         type: "requesFriends",
@@ -54,6 +59,7 @@ function Global({ children }) {
         optional: "messagesHistory",
       });
       dispatch(datauserSlide.actions.setFriends(friends.data));
+      dispatch(datauserSlide.actions.setFriendsMap(friendsMap));
       dispatch(datauserSlide.actions.setRequestFriends(requesFriends.data));
       dispatch(datauserSlide.actions.setWanttobeFriends(wanttobeFriends.data));
       dispatch(datauserSlide.actions.setConversations(conversations));

@@ -21,6 +21,9 @@ export default {
     friends: function (state) {
       return state.datauser.friends;
     },
+    friendsMap: function (state) {
+      return state.datauser.friendsMap;
+    },
     resquestfriends: function (state) {
       return state.datauser.requestfriends;
     },

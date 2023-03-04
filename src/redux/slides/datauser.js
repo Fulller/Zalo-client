@@ -1,19 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
 import LocalStorare from "../../tools/localStorage";
 
+let initialState = {
+  friends: [],
+  friendsMap: {},
+  groups: [],
+  requestfriends: [],
+  wanttobefriends: [],
+  conversations: {},
+  messageshistory: [],
+};
 export default createSlice({
   name: "datauser",
-  initialState: {
-    friends: [],
-    groups: [],
-    requestfriends: [],
-    wanttobefriends: [],
-    conversations: {},
-    messageshistory: [],
-  },
+  initialState: initialState,
   reducers: {
+    setDefault: (state, action) => {
+      state = initialState;
+      return state;
+    },
     setFriends: (state, action) => {
       state.friends = action.payload;
+      return state;
+    },
+    setFriendsMap: (state, action) => {
+      state.friendsMap = action.payload;
       return state;
     },
     setRequestFriends: (state, action) => {

@@ -27,7 +27,12 @@ function Navbar() {
         placement="right-end"
         interactive={true}
         render={() => {
-          return <UserPopper></UserPopper>;
+          return (
+            <UserPopper
+              visible={visibleUserPopper}
+              setVisible={setVisibleUserPopper}
+            ></UserPopper>
+          );
         }}
         onClickOutside={() => setVisibleUserPopper(false)}
       >
@@ -97,7 +102,11 @@ function Navbar() {
             placement="top-start"
             interactive={true}
             render={() => {
-              return <SettingPoper></SettingPoper>;
+              return (
+                <SettingPoper
+                  setVisible={setVisileSettingPopper}
+                ></SettingPoper>
+              );
             }}
             onClickOutside={() => setVisileSettingPopper(false)}
           >
