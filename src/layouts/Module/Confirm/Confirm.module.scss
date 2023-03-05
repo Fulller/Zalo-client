@@ -29,10 +29,10 @@
       }
       .disagree {
         color: black;
-        background-color: rgba(0, 0, 0, 0.15);
+        background-color: rgba(0, 0, 0, 0.1);
 
         &:hover {
-          background-color: rgba(0, 0, 0, 0.2);
+          background-color: rgba(0, 0, 0, 0.15);
         }
       }
       .agree {

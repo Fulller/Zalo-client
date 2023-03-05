@@ -11,6 +11,7 @@ import services from "../../../services";
 import Image from "../../../Images";
 import MoreButton from "../MoreButton";
 import { timeAgo } from "../.../../../../components/Global";
+import { socket } from "../.././../components/Global";
 
 const cx = classNames.bind(style);
 function UserItem({
@@ -55,6 +56,10 @@ function UserItem({
           });
           if (response.isSuccess) {
             dispatch(datauserSlide.actions.addFriend(data));
+            socket.emit("acceptrequestfriend", {
+              userName: user.userName,
+              userNameFriend: data.userName,
+            });
           }
         };
         break;
@@ -71,6 +76,10 @@ function UserItem({
           });
           if (response.isSuccess) {
             dispatch(datauserSlide.actions.wanttobeFriend(data));
+            socket.emit("wanttobefriend", {
+              userName: user.userName,
+              userNameFriend: data.userName,
+            });
           }
         };
         break;

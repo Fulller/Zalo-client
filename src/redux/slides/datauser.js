@@ -39,6 +39,7 @@ export default createSlice({
       state.requestfriends = state.requestfriends.filter((friend) => {
         return friend.userName != action.payload.userName;
       });
+      state.friendsMap[action.payload.userName] = action.payload;
       return state;
     },
     wanttobeFriend: (state, action) => {

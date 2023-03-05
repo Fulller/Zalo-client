@@ -27,10 +27,7 @@ function Messages({ data }) {
     <div className={cx("messages")} ref={messagesRef}>
       {conversation &&
         conversation.messages.map((message, index) => {
-          let sender = conversation.members.find((member) => {
-            return member.userName == message.sender;
-          });
-          let avatar = friendsMap[sender.userName]?.avatar;
+          let avatar = friendsMap[message?.sender]?.avatar;
           let time = message.createdAt.slice(11, 16).split(":");
           let messageType = [];
           if (message.sender != conversation.messages[index - 1]?.sender) {

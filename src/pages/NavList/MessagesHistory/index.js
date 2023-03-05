@@ -26,9 +26,12 @@ function MessagesHistory() {
           type: "chat-friend",
           data: {
             user: user,
-            friend: messagesHistory[0].members.find((member) => {
-              return member.userName != user.userName;
-            }),
+            friend:
+              friendsMap[
+                messagesHistory[0].members.find((member) => {
+                  return member != user.userName;
+                })
+              ],
           },
         })
       );
@@ -39,9 +42,9 @@ function MessagesHistory() {
       {messagesHistory &&
         messagesHistory.map((conversation) => {
           let friend = conversation?.members.find((member) => {
-            return member.userName != user.userName;
+            return member != user.userName;
           });
-          friend = friendsMap[friend.userName];
+          friend = friendsMap[friend];
           let isActive =
             detailcontent?.type == "chat-friend" &&
             detailcontent?.data?.friend?.userName == friend?.userName;

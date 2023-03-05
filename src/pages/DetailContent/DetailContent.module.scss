@@ -63,6 +63,11 @@
     .title {
       height: 70px;
       border-bottom: 1.5px solid var(--gray-blur);
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
     }
   }
   .hideInfoContent {

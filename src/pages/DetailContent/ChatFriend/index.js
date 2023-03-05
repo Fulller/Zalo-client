@@ -28,8 +28,8 @@ function ChatFriend({ data }) {
       <div
         className={cxlayout(["right", !showinfocontent && "hideInfoContent"])}
       >
-        <div className={cxlayout("title")}>title</div>
-        <div className={cxlayout("detaildata")}>detaildata</div>
+        <div className={cxlayout("title")}>Thông tin hội thoại</div>
+        <div className={cxlayout("detaildata")}>Detail conversation</div>
       </div>
     </div>
   );

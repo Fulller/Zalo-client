@@ -54,10 +54,11 @@ function Global({ children }) {
           conversations[conversationId] = response?.data;
         }
       }
-      let messageshistory = await services.getoptional({
-        userName: user.userName,
-        optional: "messagesHistory",
-      });
+      let messageshistory =
+        (await services.getoptional({
+          userName: user.userName,
+          optional: "messagesHistory",
+        })) || [];
       dispatch(datauserSlide.actions.setFriends(friends.data));
       dispatch(datauserSlide.actions.setFriendsMap(friendsMap));
       dispatch(datauserSlide.actions.setRequestFriends(requesFriends.data));
