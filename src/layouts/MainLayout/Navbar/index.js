@@ -11,6 +11,9 @@ import { useHref } from "react-router-dom";
 import { useState } from "react";
 import UserPopper from "../../../components/Poppers/UserPopper";
 import SettingPoper from "../../../components/Poppers/SettingPopper";
+import Image from "../../../Images";
+import selector from "../../../redux/selector";
+import { useSelector } from "react-redux";
 
 const cx = classNames.bind(style);
 function Navbar() {
@@ -18,7 +21,7 @@ function Navbar() {
   let [visibleSettingPopper, setVisileSettingPopper] = useState(false);
   let data = useNavData();
   let href = useHref();
-  let userData = useUserData();
+  let userData = useSelector(selector.user);
   let text = useText("mainlayout");
   return (
     <div className={cx("navbar")}>
@@ -41,16 +44,9 @@ function Navbar() {
           content={<span>{userData?.showName}</span>}
           placement="left"
         >
-          <img
-            isuser
-            className={cx("avatar")}
-            src={userData?.avatar}
-            onError={(e) =>
-              (e.target.src =
-                "https://images.assetsdelivery.com/compings_v2/koblizeek/koblizeek2001/koblizeek200100050.jpg")
-            }
-            onClick={() => setVisibleUserPopper(true)}
-          ></img>
+          <div onClick={() => setVisibleUserPopper(true)}>
+            <Image className={cx("avatar")} src={userData.avatar} id></Image>
+          </div>
         </Tippy>
       </HeadLess>
       <div className={cx("wrappernav")}>

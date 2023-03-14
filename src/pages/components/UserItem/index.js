@@ -101,7 +101,7 @@ function UserItem({
         }
       }}
     >
-      <Image isuser="true" src={data.avatar}></Image>
+      <Image src={data.avatar} id></Image>
       <div className={cx("content")}>
         <div className={cx("showname_lastmessage")}>
           <h4>{data.showName}</h4>

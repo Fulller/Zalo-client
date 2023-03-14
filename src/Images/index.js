@@ -1,16 +1,17 @@
-function Image({ src, className, isuser }) {
+import { useEffect } from "react";
+import url from "../tools/url";
+
+function Image({ src = null, id = false, className }) {
+  if (id) {
+    src = url.server.getImage(src);
+  }
   return (
     <img
       className={className}
       src={src}
       onError={(e) => {
-        if (isuser) {
-          e.target.src =
-            "https://images.assetsdelivery.com/compings_v2/koblizeek/koblizeek2001/koblizeek200100050.jpg";
-        } else {
-          e.target.src =
-            "https://pusat.edu.np/wp-content/uploads/2022/09/default-image.jpg";
-        }
+        e.target.src =
+          "https://pusat.edu.np/wp-content/uploads/2022/09/default-image.jpg";
       }}
     ></img>
   );

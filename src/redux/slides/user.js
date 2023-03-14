@@ -15,5 +15,11 @@ export default createSlice({
       LocalStorare.set("user", state);
       return state;
     },
+    updateUser: (state, action) => {
+      state.avatar = action.payload.avatar;
+      state.showName = action.payload.showName;
+      LocalStorare.set("user", state);
+      return state;
+    },
   },
 });

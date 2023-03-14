@@ -1,6 +1,7 @@
 import "./Global.scss";
 import services from "../../services";
 import { useDispatch, useSelector } from "react-redux";
+import userSlide from "../../redux/slides/user";
 import datauserSlide from "../../redux/slides/datauser";
 import { useEffect, useState } from "react";
 import selector from "../../redux/selector";
@@ -11,6 +12,7 @@ import useSocket from "../../hooks/useSocket";
 import TimeAgo from "javascript-time-ago";
 import vi from "javascript-time-ago/locale/vi";
 import en from "javascript-time-ago/locale/en";
+import imageBase64 from "../../tools/imageBase64";
 
 const socket = io(url.socket);
 let timeAgo;
@@ -59,6 +61,10 @@ function Global({ children }) {
           userName: user.userName,
           optional: "messagesHistory",
         })) || [];
+      if (user) {
+        let userData = await services.getinfouser({ userName: user.userName });
+        dispatch(userSlide.actions.setUser({ user: userData.data }));
+      }
       dispatch(datauserSlide.actions.setFriends(friends.data));
       dispatch(datauserSlide.actions.setFriendsMap(friendsMap));
       dispatch(datauserSlide.actions.setRequestFriends(requesFriends.data));
@@ -66,7 +72,7 @@ function Global({ children }) {
       dispatch(datauserSlide.actions.setConversations(conversations));
       dispatch(datauserSlide.actions.setMessagesHistory(messageshistory.data));
     })();
-  }, [user]);
+  }, [user?.userName]);
 
   return <>{children}</>;
 }

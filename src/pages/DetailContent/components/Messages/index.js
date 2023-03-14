@@ -45,11 +45,7 @@ function Messages({ data }) {
               ])}
             >
               <div className={cx(["message", ...messageType])}>
-                <Image
-                  isuser="true"
-                  className={cx("avatar")}
-                  src={avatar}
-                ></Image>
+                <Image className={cx("avatar")} src={avatar} id></Image>
                 <div className={cx("content")}>
                   <p className={cx(!showinfocontent && "wide")}>
                     {message.content}

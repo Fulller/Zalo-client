@@ -9,6 +9,7 @@ let initialState = {
   wanttobefriends: [],
   conversations: {},
   messageshistory: [],
+  avatarMap: {},
 };
 export default createSlice({
   name: "datauser",
@@ -69,6 +70,10 @@ export default createSlice({
         return mh != action.payload;
       });
       state.messageshistory.unshift(action.payload);
+      return state;
+    },
+    setAvatarMap: (state, action) => {
+      state.avatarMap = action.payload;
       return state;
     },
   },

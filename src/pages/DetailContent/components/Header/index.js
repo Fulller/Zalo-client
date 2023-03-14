@@ -4,6 +4,7 @@ import Tippy from "@tippyjs/react";
 import useText from "../../../../hooks/useText";
 import { useDispatch } from "react-redux";
 import settingSlide from "../../../../redux/slides/setting";
+import Image from "../../../../Images";
 
 const cx = classNames.bind(style);
 function Header({ data }) {
@@ -15,7 +16,7 @@ function Header({ data }) {
         let friend = data.data.friend;
         return (
           <>
-            <img src={friend.avatar} width="100"></img>
+            <Image src={friend.avatar} id width="100"></Image>
             <div className={cx("info")}>
               <h4>{friend.showName}</h4>
             </div>

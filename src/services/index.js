@@ -1,5 +1,6 @@
 import axios from "axios";
 import url from "../tools/url";
+import imageBase64 from "../tools/imageBase64";
 export default {
   login: function (body) {
     return axios({
@@ -20,6 +21,15 @@ export default {
         password: body.password,
         showName: body.showName,
         male: body.male,
+      },
+    }).then((data) => data.data);
+  },
+  getinfouser: function (body) {
+    return axios({
+      method: "get",
+      url: url.server.userAPI("/getinfouser"),
+      params: {
+        userName: body.userName,
       },
     }).then((data) => data.data);
   },
@@ -110,6 +120,41 @@ export default {
         userName: body.userName,
         optional: body.optional,
       },
+    }).then((data) => data.data);
+  },
+  uploadImage: function (body) {
+    let bodyFormData = new FormData();
+    bodyFormData.append("image", body);
+    return axios({
+      method: "post",
+      url: url.server.imageAPI("/upload"),
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      data: bodyFormData,
+    }).then((data) => data.data);
+  },
+  getImage: function (body) {
+    return axios({
+      method: "get",
+      url: url.server.imageAPI("/get"),
+      params: {
+        id: body,
+      },
+    }).then((data) => imageBase64(data?.data?.data));
+  },
+  updatamessageshistory: function (body) {
+    return axios({
+      method: "put",
+      url: url.server.userAPI("/updateinfouser"),
+      data: body,
+    }).then((data) => data.data);
+  },
+  updateinfouser: function (body) {
+    return axios({
+      method: "put",
+      url: url.server.userAPI("/updateinfouser"),
+      data: body,
     }).then((data) => data.data);
   },
 };

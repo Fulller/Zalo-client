@@ -74,6 +74,13 @@ export default {
       plsenterusername: "Hãy nhập username cần kết bạn !",
       youwantlogout: "Bạn có muốn đăng xuất khỏi Zalo?",
       logout: "Đăng xuất",
+      infoaccount: "Thông tin tài khoản",
+      infopersonal: "Thông tin cá nhân",
+      updateinfo: "Cập nhật thông tin",
+      showname: "Tên hiển thị",
+      pleaseuserealname: "Sử dụng tên thật để bạn bè dễ dàng nhận diện hơn",
+      update: "Cập nhật",
+      cancel: "Hủy",
     },
     popper: {
       watchinfo: "Xem thông tin",
