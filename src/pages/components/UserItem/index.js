@@ -108,7 +108,16 @@ function UserItem({
           {lastMessage && (
             <p>
               {lastMessage.sender == user.userName && `${text.you}: `}
-              {lastMessage.content}
+              {lastMessage.type == "image" ? (
+                <>
+                  <span className={cx(["material-symbols-rounded", "icon"])}>
+                    image
+                  </span>
+                  <span>Hình ảnh</span>
+                </>
+              ) : (
+                lastMessage.content
+              )}
             </p>
           )}
         </div>

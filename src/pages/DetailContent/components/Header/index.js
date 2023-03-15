@@ -5,6 +5,7 @@ import useText from "../../../../hooks/useText";
 import { useDispatch } from "react-redux";
 import settingSlide from "../../../../redux/slides/setting";
 import Image from "../../../../Images";
+import Avatar from "../../../components/Avatar";
 
 const cx = classNames.bind(style);
 function Header({ data }) {
@@ -16,7 +17,9 @@ function Header({ data }) {
         let friend = data.data.friend;
         return (
           <>
-            <Image src={friend.avatar} id width="100"></Image>
+            <Avatar data={data?.data?.friend}>
+              <Image src={friend.avatar} id width="100"></Image>
+            </Avatar>
             <div className={cx("info")}>
               <h4>{friend.showName}</h4>
             </div>

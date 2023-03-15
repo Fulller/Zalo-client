@@ -5,6 +5,7 @@ import mergeUserName from "../../../../tools/mergeUserName";
 import { useSelector } from "react-redux";
 import selector from "../../../../redux/selector";
 import Image from "../../../../Images";
+import Avatar from "../../../components/Avatar";
 
 const cx = classNames.bind(style);
 function Messages({ data }) {
@@ -36,6 +37,7 @@ function Messages({ data }) {
           if (message.sender != conversation.messages[index + 1]?.sender) {
             messageType.push("type2");
           }
+
           return (
             <div
               key={message._id}
@@ -45,15 +47,30 @@ function Messages({ data }) {
               ])}
             >
               <div className={cx(["message", ...messageType])}>
-                <Image className={cx("avatar")} src={avatar} id></Image>
-                <div className={cx("content")}>
-                  <p className={cx(!showinfocontent && "wide")}>
-                    {message.content}
-                  </p>
-                  <div className={cx("time")}>
-                    {(time[0] * 1 + 7) % 24}:{time[1]}
+                <Avatar data={friendsMap[message?.sender]}>
+                  <Image className={cx("avatar")} src={avatar} id></Image>
+                </Avatar>
+                {message.type == "image" ? (
+                  <div className={cx("content-image")}>
+                    <Image
+                      className={cx(!showinfocontent && "wide")}
+                      src={message.content}
+                      id
+                    ></Image>
+                    <div className={cx("time")}>
+                      {(time[0] * 1 + 7) % 24}:{time[1]}
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <div className={cx("content")}>
+                    <p className={cx(!showinfocontent && "wide")}>
+                      {message.content}
+                    </p>
+                    <div className={cx("time")}>
+                      {(time[0] * 1 + 7) % 24}:{time[1]}
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           );

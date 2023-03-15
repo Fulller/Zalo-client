@@ -28,7 +28,7 @@ function useSocket(socket) {
         conversationId: data.conversationId,
       });
       if (response.isSuccess) {
-        await services.updatamessageshistory({
+        let resupdate = await services.updatamessageshistory({
           userName: user.userName,
           conversationId: data.conversationId,
         });

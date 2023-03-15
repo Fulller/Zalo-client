@@ -1,5 +1,5 @@
 .messages {
-  background-color: rgb(186, 186, 233);
+  background-color: rgba(0, 0, 0, 0.2);
   height: 100%;
   overflow-y: scroll;
 
@@ -51,6 +51,22 @@
           display: none;
         }
       }
+      .content-image {
+        img {
+          max-width: 300px;
+          max-height: 300px;
+          border-radius: 6px;
+        }
+        img.wide {
+          max-width: 600px;
+        }
+        .time {
+          color: rgb(91, 91, 91);
+          font-size: 14px;
+          padding-top: 12px;
+          display: none;
+        }
+      }
     }
     .type1 {
       .avatar {
@@ -63,12 +79,20 @@
           display: block;
         }
       }
+      .content-image {
+        .time {
+          display: block;
+        }
+      }
     }
   }
   .right {
     justify-content: right;
     .message {
       flex-direction: row-reverse;
+      .content {
+        background-color: rgb(219, 219, 246);
+      }
     }
   }
 }

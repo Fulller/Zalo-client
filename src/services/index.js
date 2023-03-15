@@ -81,6 +81,7 @@ export default {
         conversationId: body.conversationId,
         content: body.content,
         sender: body.sender,
+        type: body.type || "message",
       },
     }).then((data) => data.data);
   },
@@ -146,7 +147,7 @@ export default {
   updatamessageshistory: function (body) {
     return axios({
       method: "put",
-      url: url.server.userAPI("/updateinfouser"),
+      url: url.server.userAPI("/updatamessageshistory"),
       data: body,
     }).then((data) => data.data);
   },

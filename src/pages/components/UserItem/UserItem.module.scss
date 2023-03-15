@@ -39,6 +39,7 @@
         font-weight: 500;
         padding: 4px 0px;
       }
+
       p {
         color: rgb(151, 147, 147);
         font-size: 14px;
@@ -47,6 +48,12 @@
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
+
+        .icon {
+          font-size: 20px;
+          padding: 0px 4px;
+          transform: translateY(4px);
+        }
       }
     }
     .timeAgo {
