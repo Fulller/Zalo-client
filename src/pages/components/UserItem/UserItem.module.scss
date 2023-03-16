@@ -43,8 +43,9 @@
       p {
         color: rgb(151, 147, 147);
         font-size: 14px;
+        max-width: 140px;
 
-        overflow-y: hidden;
+        overflow: hidden;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;

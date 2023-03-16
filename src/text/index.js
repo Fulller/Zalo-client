@@ -64,6 +64,7 @@ export default {
       inputmesageto: "Nhập tin nhắn tới ",
       send: "GỬI",
       you: "Bạn",
+      sendimage: "Gửi hình ảnh",
     },
     module: {
       cantfinduser: "Không tìm thấy người dùng",
@@ -91,6 +92,52 @@ export default {
       setting: "Cài đặt",
       logout: "Đăng xuất",
       language: "Ngôn ngữ",
+    },
+    welcome: {
+      title: "Chào mừng đến với ",
+      description:
+        "Khám phá những tiện ích hỡ trợ làm việc và trò truyện cùng người thân, bạn bè được tối ưu hóa cho máy tính của bạn.",
+      slide0: {
+        title: "Gọi nhóm và làm việc hiệu quả với Zalo Group Call",
+        description: "Trao đổi công việc mọi lúc, mọi nơi",
+      },
+      slide1: {
+        title: "Giải quyết công việc hiệu quả hơn, lên đến 40%",
+        description: "Với Zalo Web",
+      },
+      slide2: {
+        title: "Chat nhóm với đồng nghiệp",
+        description: "Tiện lợi hơn, nhờ công cụ chat trên máy tính",
+      },
+      slide3: {
+        title: "Gửi file nặng?",
+        description: "Đã có Zalo Web xửa hết",
+      },
+      slide4: {
+        title: "Trải nghiệm xuyên suốt",
+        description:
+          "Kết nối và giải quyết công việc trên mọi thiết bị với dữ liệu luôn được đồng bộ",
+      },
+      slide5: {
+        title: "Xuất dữ liệu khi chuyển máy, đổi máy tính mới",
+        description:
+          "Bây giờ bạn có thể dễ dàng xuất dữ liệu và nhập dữ liệu lịch sử trò truyện của mình khi thay đổi máy tính mới",
+      },
+      slide6: {
+        title: "Tin nhắn tự xóa",
+        description:
+          "Tự giờ tin nhắn có thể tự xóa sau khoảng thời gian nhất định",
+      },
+      slide7: {
+        title: "Mã hóa đầu cuối",
+        description:
+          "Nội dung tin nhắn được mã hóa trong suốt quá trình xóa và nhận",
+      },
+      slide8: {
+        title: "Nhắn tin nhiều hơn, soạn thảo ít hơn",
+        description:
+          "Sử dụng tin nhắn nhanh để lưa trữ các tin nhắn thường dùng và gửi nhanh trong hội thoại bất kỳ",
+      },
     },
   },
 };

@@ -2,6 +2,7 @@ import ListFriend from "./ListFriend";
 import ListGroup from "./ListGroup";
 import RequestFriend from "./RequestFriend";
 import ChatFriend from "./ChatFriend";
+import Welcome from "./Welcome";
 import { useSelector } from "react-redux";
 import selector from "../../redux/selector";
 
@@ -18,7 +19,7 @@ function DetailContent() {
       case "chat-friend":
         return <ChatFriend data={detailContentData}></ChatFriend>;
       default:
-        return <></>;
+        return <Welcome></Welcome>;
     }
   }
   return (

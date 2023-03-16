@@ -52,6 +52,8 @@
         }
       }
       .content-image {
+        background-color: transparent;
+        padding: 0px;
         img {
           max-width: 300px;
           max-height: 300px;
@@ -92,6 +94,9 @@
       flex-direction: row-reverse;
       .content {
         background-color: rgb(219, 219, 246);
+      }
+      .content-image {
+        background-color: transparent;
       }
     }
   }

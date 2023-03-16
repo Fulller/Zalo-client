@@ -65,7 +65,7 @@ function InputText({ data: { data } }) {
   return (
     <div className={cx("input-box")}>
       <div className={cx("send-options")}>
-        <Tippy content={<span>Gửi hình ảnh</span>}>
+        <Tippy content={<span>{text.sendimage}</span>}>
           <label className={cx("send-option")} onInput={sendImage}>
             <input type="file"></input>
             <span className="material-symbols-rounded">image</span>
