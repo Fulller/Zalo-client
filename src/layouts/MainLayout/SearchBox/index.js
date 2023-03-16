@@ -59,7 +59,7 @@ function SearchBox() {
             <span className="material-symbols-rounded">person_add</span>
           </button>
         </Tippy>
-        <Tippy delay={[500, 0]} content={<span>{text.creategroupchat}</span>}>
+        {/* <Tippy delay={[500, 0]} content={<span>{text.creategroupchat}</span>}>
           <button
             className={cx("add-group")}
             onClick={() =>
@@ -68,7 +68,7 @@ function SearchBox() {
           >
             <span className="material-symbols-rounded">group_add</span>
           </button>
-        </Tippy>
+        </Tippy> */}
       </div>
       <div className={cx(["closebtn", !isInputFocus && "hide"])}>
         {text.close}

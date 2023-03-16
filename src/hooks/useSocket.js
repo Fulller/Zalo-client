@@ -83,7 +83,7 @@ function useSocket(socket) {
       socket.off("disconnect");
       socket.off("pong");
     };
-  }, []);
-  return true;
+  }, [user]);
+  return isConnected;
 }
 export default useSocket;

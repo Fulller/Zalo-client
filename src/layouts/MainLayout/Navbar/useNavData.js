@@ -28,11 +28,11 @@ function useNavData() {
         "/todos",
         text.todo
       ),
-      new navitem(
-        <span className="material-symbols-rounded">videocam</span>,
-        "/zavi",
-        text.zavi
-      ),
+      // new navitem(
+      //   <span className="material-symbols-rounded">videocam</span>,
+      //   "/zavi",
+      //   text.zavi
+      // ),
     ],
     bottom: [
       new navitem(
@@ -40,11 +40,11 @@ function useNavData() {
         "/message",
         text.mycloude
       ),
-      new navitem(
-        <span className="material-symbols-rounded">dashboard</span>,
-        "/message",
-        text.screencapture
-      ),
+      // new navitem(
+      //   <span className="material-symbols-rounded">dashboard</span>,
+      //   "/message",
+      //   text.screencapture
+      // ),
       new navitem(
         <span className="material-symbols-rounded">business_center</span>,
         "/message",

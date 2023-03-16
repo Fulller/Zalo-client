@@ -25,7 +25,7 @@ function Welcome() {
   useEffect(() => {
     let changeSlideInterval = setInterval(() => {
       handleChangeSlide("next");
-    }, 2000);
+    }, 5000);
     document
       .getElementById("slide" + currentSlide)
       .scrollIntoView({ behavior: "smooth" });

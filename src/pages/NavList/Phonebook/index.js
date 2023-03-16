@@ -16,11 +16,11 @@ function Phonebook() {
       title: text.listfriend,
       icon: "group",
     },
-    {
-      id: "list-group",
-      title: text.listgroup,
-      icon: "group_add",
-    },
+    // {
+    //   id: "list-group",
+    //   title: text.listgroup,
+    //   icon: "group_add",
+    // },
     {
       id: "request-friend",
       title: text.requestfriend,

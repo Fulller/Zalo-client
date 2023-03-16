@@ -22,7 +22,9 @@ function Messages({ data }) {
     }) || null;
   let messagesRef = useRef();
   useEffect(() => {
-    messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
+    setTimeout(() => {
+      messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
+    }, 500);
   });
   function Content({ message, time }) {
     switch (message.type) {

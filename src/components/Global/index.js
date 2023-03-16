@@ -14,13 +14,13 @@ import vi from "javascript-time-ago/locale/vi";
 import en from "javascript-time-ago/locale/en";
 import imageBase64 from "../../tools/imageBase64";
 
-const socket = io(url.socket);
 let timeAgo;
+const socket = io(url.socket);
 function Global({ children }) {
   let user = useSelector(selector.user);
   let dispatch = useDispatch();
   let language = useSelector(selector.language);
-  useSocket(socket);
+  let isConnect = useSocket(socket);
   useEffect(() => {
     if (language == "vi") {
       TimeAgo.addDefaultLocale(vi);
@@ -73,7 +73,6 @@ function Global({ children }) {
       dispatch(datauserSlide.actions.setMessagesHistory(messageshistory.data));
     })();
   }, [user?.userName]);
-
   return <>{children}</>;
 }
 export { socket, timeAgo };
