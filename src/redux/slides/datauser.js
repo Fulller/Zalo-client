@@ -56,9 +56,9 @@ export default createSlice({
       state.conversations = action.payload;
       return state;
     },
-    setConversation: (state, action) => {
-      state.conversations[action.payload.conversationId] =
-        action.payload.conversation;
+    setMessages: (state, action) => {
+      state.conversations[action.payload.conversationId].messages =
+        action.payload.messages;
       return state;
     },
     setMessagesHistory: (state, action) => {

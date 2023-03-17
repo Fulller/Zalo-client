@@ -6,12 +6,12 @@ import selector from "../../../redux/selector";
 import Header from "../components/Header";
 import InputText from "../components/InputText";
 import Messages from "../components/Messages";
+import InfoConversation from "../components/InfoConversation";
 import Image from "../../../Images";
 
 const cxlayout = classNames.bind(layoutStyle);
 function ChatFriend({ data }) {
   let showinfocontent = useSelector(selector.showinfocontent);
-  console.log(data);
   return (
     <div className={cxlayout("layout2")}>
       <div className={cxlayout("left")}>
@@ -34,7 +34,7 @@ function ChatFriend({ data }) {
         className={cxlayout(["right", !showinfocontent && "hideInfoContent"])}
       >
         <div className={cxlayout("title")}>Thông tin hội thoại</div>
-        <div className={cxlayout("detaildata")}>Detail conversation</div>
+        <InfoConversation data={data}></InfoConversation>
       </div>
     </div>
   );

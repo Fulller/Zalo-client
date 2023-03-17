@@ -18,7 +18,7 @@ function InputText({ data: { data } }) {
         data.user.userName,
         data.friend.userName
       );
-      let response = await services.sendmessage({
+      let response = await services.sendmessageV2({
         conversationId: conversationId,
         content: message.trim(),
         sender: data.user.userName,
@@ -35,14 +35,13 @@ function InputText({ data: { data } }) {
   }
   async function sendImage(e) {
     let response = await services.uploadImage(e.target.files[0]);
-    console.log({ response });
     if (response.isSuccess) {
       let image = response.data;
       let conversationId = mergeUserName(
         data.user.userName,
         data.friend.userName
       );
-      let responseMessage = await services.sendmessage({
+      let responseMessage = await services.sendmessageV2({
         conversationId: conversationId,
         content: image,
         sender: data.user.userName,

@@ -24,10 +24,13 @@ function useSocket(socket) {
       setLastPong(new Date().toISOString());
     });
     socket.on("receiveMessageFromFriend", async (data) => {
-      let response = await services.getconversation({
+      // let response = await services.getconversation({
+      //   conversationId: data.conversationId,
+      // });
+      let messages = await services.getmessageV2({
         conversationId: data.conversationId,
       });
-      if (response.isSuccess) {
+      if (messages.isSuccess) {
         let resupdate = await services.updatamessageshistory({
           userName: user.userName,
           conversationId: data.conversationId,
@@ -36,9 +39,9 @@ function useSocket(socket) {
           datauserSlide.actions.updateMessagesHistory(data.conversationId)
         );
         dispatch(
-          datauserSlide.actions.setConversation({
+          datauserSlide.actions.setMessages({
             conversationId: data.conversationId,
-            conversation: response.data,
+            messages: messages.data,
           })
         );
       }

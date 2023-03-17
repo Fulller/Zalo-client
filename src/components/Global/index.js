@@ -52,7 +52,9 @@ function Global({ children }) {
       for (let friend of friends.data) {
         let conversationId = mergeUserName(user.userName, friend.userName);
         let response = await services.getconversation({ conversationId });
-        if (response.isSuccess) {
+        let responseMessages = await services.getmessageV2({ conversationId });
+        if (response.isSuccess && responseMessages.isSuccess) {
+          response.data.messages = responseMessages.data;
           conversations[conversationId] = response?.data;
         }
       }

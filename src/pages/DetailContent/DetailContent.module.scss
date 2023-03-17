@@ -56,7 +56,7 @@
       background-image: radial-gradient(
         circle,
         rgba(255, 255, 255, 0),
-        rgba(222, 222, 245, 1)
+        rgb(206, 206, 244)
       );
 
       .background {
@@ -70,7 +70,7 @@
         right: 0;
         object-fit: cover;
         object-position: center;
-        filter: blur(10px);
+        filter: blur(20px);
       }
     }
     .input {
@@ -81,6 +81,8 @@
     border-left: 1.5px solid var(--gray-blur);
     width: 340px;
     transition: all 0.5s;
+    display: flex;
+    flex-direction: column;
     .title {
       height: 70px;
       border-bottom: 1.5px solid var(--gray-blur);

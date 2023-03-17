@@ -25,7 +25,7 @@ function Messages({ data }) {
     setTimeout(() => {
       messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
     }, 500);
-  });
+  }, [dataMessages]);
   function Content({ message, time }) {
     switch (message.type) {
       case "message":

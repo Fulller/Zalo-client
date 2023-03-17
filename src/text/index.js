@@ -65,6 +65,8 @@ export default {
       send: "GỬI",
       you: "Bạn",
       sendimage: "Gửi hình ảnh",
+      image: "Ảnh",
+      linh: "Link",
     },
     module: {
       cantfinduser: "Không tìm thấy người dùng",

@@ -158,4 +158,25 @@ export default {
       data: body,
     }).then((data) => data.data);
   },
+  sendmessageV2: function (body) {
+    return axios({
+      method: "post",
+      url: url.server.userAPI("/sendmessageV2"),
+      data: {
+        conversationId: body.conversationId,
+        content: body.content,
+        sender: body.sender,
+        type: body.type || "message",
+      },
+    }).then((data) => data.data);
+  },
+  getmessageV2: function (body) {
+    return axios({
+      method: "get",
+      url: url.server.userAPI("/getmessageV2"),
+      params: {
+        conversationId: body.conversationId,
+      },
+    }).then((data) => data.data);
+  },
 };
