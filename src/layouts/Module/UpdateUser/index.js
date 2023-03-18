@@ -3,6 +3,7 @@ import classNames from "classnames/bind";
 import { useSelector, useDispatch } from "react-redux";
 import selector from "../../../redux/selector";
 import Image from "../../../Images";
+import Background from "../components/Background";
 import imageLink from "../../../Images/link";
 import useText from "../../../hooks/useText";
 import userSlide from "../../../redux/slides/user";
@@ -16,6 +17,7 @@ function UpdataUser({ data }) {
   let dispatch = useDispatch();
   let [isUpdate, setIsUpdate] = useState(false);
   let [file, setFile] = useState(null);
+  let [filebg, setFilebg] = useState(null);
   let [showname, setShowname] = useState(user?.showName);
   let text = useText("module");
   function handleEnteringShowname(e) {
@@ -29,6 +31,12 @@ function UpdataUser({ data }) {
       setIsUpdate(true);
     }
     setFile(e.target.files[0]);
+  }
+  function handleSelectFileBg(e) {
+    if (!isUpdate) {
+      setIsUpdate(true);
+    }
+    setFilebg(e.target.files[0]);
   }
   function handleCancelUpdate() {
     dispatch(
@@ -46,16 +54,25 @@ function UpdataUser({ data }) {
           avatar = response.data;
         }
       }
+      let background = user.background;
+      if (filebg) {
+        let responsefilegb = await services.uploadImage(filebg);
+        if (responsefilegb.isSuccess) {
+          background = responsefilegb.data;
+        }
+      }
       let response = await services.updateinfouser({
         userName: user.userName,
         showName: showname,
         avatar: avatar,
+        background: background,
       });
       if (response.isSuccess) {
         dispatch(
           userSlide.actions.updateUser({
             avatar: avatar,
             showName: showname,
+            background: background,
           })
         );
       }
@@ -70,10 +87,26 @@ function UpdataUser({ data }) {
     <div className={cx("updateuser")}>
       <h3>Cập nhật thông tin</h3>
       <div className={cx("top")}>
-        <Image
-          className={cx("background")}
-          src={imageLink.backgrounduser}
-        ></Image>
+        <input
+          type="file"
+          accept="image/*"
+          id="backgroundfile"
+          onInput={handleSelectFileBg}
+        ></input>
+        <label htmlFor="backgroundfile">
+          {filebg ? (
+            <Background
+              className={cx("background")}
+              src={URL.createObjectURL(filebg)}
+              id={false}
+            ></Background>
+          ) : (
+            <Background
+              className={cx("background")}
+              src={user.background}
+            ></Background>
+          )}
+        </label>
         <div className={cx("avatar")}>
           <input
             type="file"
@@ -81,7 +114,7 @@ function UpdataUser({ data }) {
             id="avatarfile"
             onInput={handleSelectFile}
           ></input>
-          <label for="avatarfile">
+          <label htmlFor="avatarfile">
             {file ? (
               <Image
                 className={cx("avatar-img")}

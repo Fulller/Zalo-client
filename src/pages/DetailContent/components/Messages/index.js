@@ -25,7 +25,10 @@ function Messages({ data }) {
     setTimeout(() => {
       messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
     }, 500);
-  }, [dataMessages]);
+  }, []);
+  useEffect(() => {
+    messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
+  }, [conversation]);
   function Content({ message, time }) {
     switch (message.type) {
       case "message":

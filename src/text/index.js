@@ -84,6 +84,8 @@ export default {
       pleaseuserealname: "Sử dụng tên thật để bạn bè dễ dàng nhận diện hơn",
       update: "Cập nhật",
       cancel: "Hủy",
+      addfriend: "Thêm bạn",
+      username: "Tên đăng nhập (username)",
     },
     popper: {
       watchinfo: "Xem thông tin",

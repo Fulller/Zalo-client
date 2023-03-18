@@ -2,7 +2,6 @@ import style from "./Navbar.module.scss";
 import classNames from "classnames/bind";
 import useNavData from "./useNavData";
 import { Link } from "react-router-dom";
-import useUserData from "../../../hooks/useUserData";
 import Tippy from "@tippyjs/react";
 import HeadLess from "@tippyjs/react/headless";
 import "tippy.js/dist/tippy.css";

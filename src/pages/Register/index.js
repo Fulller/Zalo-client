@@ -28,8 +28,15 @@ function Register() {
       setRegisterBtnCanClick(false);
     }
   }, [username, password, showname]);
-  function setData(e, setFunction) {
-    setFunction(e.target.value);
+  function setData(e, setFunction, type = "nomal") {
+    let value = e.target.value;
+    if (type == "username") {
+      value = value.toLowerCase().replace(" ", "");
+    }
+    if (type == "password") {
+      value = value.replace(" ", "");
+    }
+    setFunction(value);
   }
   async function handleRegisterBtnClick() {
     if (registerBtnCanClick) {
@@ -61,7 +68,7 @@ function Register() {
               type="text"
               placeholder={text.username}
               value={username}
-              onChange={(e) => setData(e, setUsername)}
+              onChange={(e) => setData(e, setUsername, "username")}
             ></input>
           </div>
           <div className={cx("form-input-group")}>
@@ -71,7 +78,7 @@ function Register() {
               type="text"
               placeholder={text.password}
               value={password}
-              onChange={(e) => setData(e, setPassword)}
+              onChange={(e) => setData(e, setPassword, "password")}
             ></input>
           </div>
           <div className={cx("form-input-group")}>

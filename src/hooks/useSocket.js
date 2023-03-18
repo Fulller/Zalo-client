@@ -1,5 +1,3 @@
-import io from "socket.io-client";
-import url from "../tools/url";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import selector from "../redux/selector";
@@ -24,9 +22,6 @@ function useSocket(socket) {
       setLastPong(new Date().toISOString());
     });
     socket.on("receiveMessageFromFriend", async (data) => {
-      // let response = await services.getconversation({
-      //   conversationId: data.conversationId,
-      // });
       let messages = await services.getmessageV2({
         conversationId: data.conversationId,
       });

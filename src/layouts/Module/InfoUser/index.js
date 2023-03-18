@@ -5,7 +5,7 @@ import selector from "../../../redux/selector";
 import useText from "../../../hooks/useText";
 import settingSlide from "../../../redux/slides/setting";
 import Image from "../../../Images";
-import imageLink from "../../../Images/link";
+import Background from "../components/Background";
 
 const cx = classNames.bind(style);
 function InfoUser({ data }) {
@@ -17,7 +17,10 @@ function InfoUser({ data }) {
     <div className={cx("infouser")}>
       <h3>{text.infoaccount}</h3>
       <div className={cx("top")}>
-        <img className={cx("background")} src={imageLink.backgrounduser}></img>
+        <Background
+          className={cx("background")}
+          src={data.background}
+        ></Background>
         <div className={cx("avatar")}>
           <Image className={cx("avatar-img")} src={data.avatar} id></Image>
         </div>
