@@ -40,6 +40,19 @@ function Messages({ data }) {
             </div>
           </div>
         );
+      case "link":
+        return (
+          <div className={cx("content")}>
+            <a href={message.content} target="_blank">
+              <p className={cx(!showinfocontent && "wide")}>
+                {message.content}
+              </p>
+            </a>
+            <div className={cx("time")}>
+              {(time[0] * 1 + 7) % 24}:{time[1]}
+            </div>
+          </div>
+        );
       case "image":
         return (
           <div className={cx(["content", "content-image"])}>

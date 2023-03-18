@@ -66,7 +66,8 @@ export default {
       you: "Bạn",
       sendimage: "Gửi hình ảnh",
       image: "Ảnh",
-      linh: "Link",
+      seeall: "Xem tất cả",
+      link: "Link",
     },
     module: {
       cantfinduser: "Không tìm thấy người dùng",
@@ -86,6 +87,8 @@ export default {
       cancel: "Hủy",
       addfriend: "Thêm bạn",
       username: "Tên đăng nhập (username)",
+      image: "Hình ảnh",
+      link: "Liên kết",
     },
     popper: {
       watchinfo: "Xem thông tin",

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "../../../../Images";
+import iconlink from "./link.png";
 
 function Category({ category, data, cx, text }) {
   let [isShow, setIsShow] = useState(true);
@@ -7,14 +8,46 @@ function Category({ category, data, cx, text }) {
   function Main() {
     switch (category) {
       case "image":
-        let a = data.reverse();
+        data = data.reverse();
         return (
           <div className={cx("category-images")}>
-            {a.map((message) => {
+            {data.map((message) => {
               return (
                 <div key={message._id} className={cx("category-image")}>
                   <Image src={message.content} id></Image>
                 </div>
+              );
+            })}
+          </div>
+        );
+      case "link":
+        data = data.reverse();
+        if (data.length > 3) {
+          data.length = 3;
+        }
+        return (
+          <div className={cx("category-links")}>
+            {data.map((link) => {
+              let date = new Date(link.createdAt);
+              let shortlink = link.content.split("//")[1].split("/")[0];
+              return (
+                <a
+                  href={link.content}
+                  target="_blank"
+                  key={link._id}
+                  className={cx("category-link")}
+                >
+                  <div className={cx("wrappericon")}>
+                    <Image src={iconlink} className={cx("icon")}></Image>
+                  </div>
+                  <div className={cx("wrapperlink")}>
+                    <h4>{link.content}</h4>
+                    <div>
+                      <span className={cx("shortlink")}>{shortlink}</span>
+                      <span> {`${date.getDate()}/${date.getMonth() + 1}`}</span>
+                    </div>
+                  </div>
+                </a>
               );
             })}
           </div>
@@ -44,7 +77,7 @@ function Category({ category, data, cx, text }) {
         <div className={cx("main")}>
           <Main></Main>
         </div>
-        <button className={cx("see-all")}>Xem tất cả</button>
+        <button className={cx("see-all")}>{text.seeall}</button>
       </div>
     </div>
   );

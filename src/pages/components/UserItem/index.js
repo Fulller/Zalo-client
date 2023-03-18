@@ -40,7 +40,30 @@ function UserItem({
       })
     );
   }
-
+  function LastMessage({ data }) {
+    switch (data.type) {
+      case "image":
+        return (
+          <>
+            <span className={cx(["material-symbols-rounded", "icon"])}>
+              image
+            </span>
+            <span>{text.image}</span>
+          </>
+        );
+      case "message":
+        return <span>{data.content}</span>;
+      case "link":
+        return (
+          <>
+            <span className={cx(["material-symbols-rounded", "icon"])}>
+              link
+            </span>
+            <span>Link</span>
+          </>
+        );
+    }
+  }
   useEffect(() => {
     let title = "";
     let handleClick = function () {};
@@ -108,16 +131,7 @@ function UserItem({
           {lastMessage && (
             <p>
               {lastMessage.sender == user.userName && `${text.you}: `}
-              {lastMessage.type == "image" ? (
-                <>
-                  <span className={cx(["material-symbols-rounded", "icon"])}>
-                    image
-                  </span>
-                  <span>Hình ảnh</span>
-                </>
-              ) : (
-                lastMessage.content
-              )}
+              <LastMessage data={lastMessage}></LastMessage>
             </p>
           )}
         </div>

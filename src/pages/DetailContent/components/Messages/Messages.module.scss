@@ -39,6 +39,12 @@
         padding: 12px;
         border-radius: 8px;
 
+        a {
+          color: rgb(51, 51, 246);
+          &:hover {
+            text-decoration: underline;
+          }
+        }
         p {
           max-width: 300px;
           word-wrap: break-word;

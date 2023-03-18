@@ -22,6 +22,7 @@ function InputText({ data: { data } }) {
         conversationId: conversationId,
         content: message.trim(),
         sender: data.user.userName,
+        type: message.trim().startsWith("http") ? "link" : "message",
       });
       if (response.isSuccess) {
         socket.emit("sendMessageToFriend", {

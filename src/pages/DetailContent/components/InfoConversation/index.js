@@ -20,6 +20,9 @@ function InfoConversation({ data }) {
   let images = conversation?.messages.filter((message, index) => {
     return message.type == "image";
   });
+  let links = conversation?.messages.filter((message, index) => {
+    return message.type == "link";
+  });
   return (
     <>
       {conversation && (
@@ -37,14 +40,8 @@ function InfoConversation({ data }) {
             text={text}
           ></Category>
           <Category
-            category="image"
-            data={images.reverse()}
-            cx={cx}
-            text={text}
-          ></Category>
-          <Category
-            category="image"
-            data={images.reverse()}
+            category="link"
+            data={links.reverse()}
             cx={cx}
             text={text}
           ></Category>
