@@ -17,11 +17,11 @@ import { useMediaQuery } from "react-responsive";
 let timeAgo;
 const socket = io(url.socket);
 function Global({ children }) {
-  let isMobile = useMediaQuery({ query: "(max-width: 700px)" });
   let user = useSelector(selector.user);
   let dispatch = useDispatch();
   let language = useSelector(selector.language);
   let isConnect = useSocket(socket);
+  let [isFrirstLoad, setIsFirstLoad] = useState(true);
 
   useEffect(() => {
     if (language == "vi") {
@@ -30,7 +30,12 @@ function Global({ children }) {
       TimeAgo.addDefaultLocale(en);
     }
     timeAgo = new TimeAgo("en-US");
-  }, []);
+    if (isFrirstLoad) {
+      setIsFirstLoad(false);
+    } else {
+      window.location.reload();
+    }
+  }, [language]);
   useEffect(() => {
     (async () => {
       let friends = await services.gettypefriends({

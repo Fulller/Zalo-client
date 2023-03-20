@@ -18,7 +18,7 @@ function Register() {
   let [username, setUsername] = useState("");
   let [password, setPassword] = useState("");
   let [showname, setShowname] = useState("");
-  let [male, setMale] = useState("male");
+  let [sex, setSex] = useState("male");
   let [message, setMessage] = useState("");
   let [registerBtnCanClick, setRegisterBtnCanClick] = useState(false);
   useEffect(() => {
@@ -44,7 +44,7 @@ function Register() {
         userName: username,
         password: password,
         showName: showname,
-        male: male,
+        sex: sex,
       });
       setMessage(codeText[data.code]);
       if (data.isSuccess) {
@@ -91,8 +91,8 @@ function Register() {
             ></input>
           </div>
           <div className={cx("form-input-group")}>
-            <span className="material-symbols-outlined">{male}</span>
-            <select name="male" onChange={(e) => setData(e, setMale)}>
+            <span className="material-symbols-outlined">{sex}</span>
+            <select name="male" onChange={(e) => setData(e, setSex)}>
               <option value="male">{text.male}</option>
               <option value="female">{text.female}</option>
             </select>

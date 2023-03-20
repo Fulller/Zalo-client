@@ -33,6 +33,10 @@ function InfoUser({ data }) {
             <span>Username</span>
             <p>{data.userName}</p>
           </div>
+          <div className={cx("info-personal")}>
+            <span>{text.sex}</span>
+            <p>{data?.sex ? text[data.sex] : text.unupdate}</p>
+          </div>
         </div>
         {isOwner && (
           <button

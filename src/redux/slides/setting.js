@@ -33,7 +33,7 @@ export default createSlice({
       return state;
     },
     setLanguage: (state, action) => {
-      state.language = action.payload.language;
+      state.language = action.payload;
       LocalStorare.set("setting", state);
       return state;
     },

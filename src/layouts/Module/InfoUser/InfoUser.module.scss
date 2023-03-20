@@ -66,6 +66,7 @@
 
       .info-personal {
         display: flex;
+        margin: 8px 0px;
         span {
           width: 120px;
           color: gray;
@@ -73,7 +74,7 @@
       }
     }
     .updateinfo {
-      margin-top: 100px;
+      margin-top: 50px;
       width: 100%;
       display: flex;
       padding: 8px;

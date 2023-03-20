@@ -37,7 +37,11 @@
 
       h4 {
         font-weight: 500;
-        padding: 4px 0px;
+        overflow: hidden;
+        line-height: 30px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
       }
 
       p {

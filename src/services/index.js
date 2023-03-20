@@ -19,7 +19,7 @@ export default {
         userName: body.userName,
         password: body.password,
         showName: body.showName,
-        male: body.male,
+        sex: body.sex,
       },
     }).then((data) => data.data);
   },

@@ -37,7 +37,7 @@ function Login() {
     passwordRef.current.focus();
   }
   function setData(e, setFunction) {
-    setFunction(e.target.value);
+    setFunction(e.target.value.toLowerCase());
   }
   async function handleLoginBtnClick() {
     if (loginBtnIsCanClick) {

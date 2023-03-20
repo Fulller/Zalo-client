@@ -6,12 +6,16 @@ import settingSlide from "../../../redux/slides/setting";
 import { useSelector, useDispatch } from "react-redux";
 import selector from "../../../redux/selector";
 
-function DetailLanguage({ cx }) {
+function DetailLanguage({ cx, settingPopperVisible }) {
   let language = useSelector(selector.language);
   let dispatch = useDispatch();
+  function hanldeChangeLanguage(l) {
+    dispatch(settingSlide.actions.setLanguage(l));
+    settingPopperVisible(false);
+  }
   return (
     <div className={cx("child-popper")}>
-      <div className={cx("item")}>
+      <div className={cx("item")} onClick={() => hanldeChangeLanguage("vi")}>
         <img src={flagvietnam}></img>
         <span className={cx("name-language")}>Tiếng Việt</span>
         <span
@@ -24,7 +28,7 @@ function DetailLanguage({ cx }) {
           done
         </span>
       </div>
-      <div className={cx("item")}>
+      <div className={cx("item")} onClick={() => hanldeChangeLanguage("en")}>
         <img src={flagusa}></img>
         <span className={cx("name-language")}>English</span>
         <span
@@ -40,13 +44,18 @@ function DetailLanguage({ cx }) {
     </div>
   );
 }
-function Language({ cx, title, icon }) {
+function Language({ cx, title, icon, setVisible: settingPopperVisible }) {
   let [visible, setVisible] = useState(false);
   return (
     <Headless
       visible={visible}
       render={() => {
-        return <DetailLanguage cx={cx}></DetailLanguage>;
+        return (
+          <DetailLanguage
+            cx={cx}
+            settingPopperVisible={settingPopperVisible}
+          ></DetailLanguage>
+        );
       }}
       onClickOutside={() => setVisible(false)}
       placement="right-start"
