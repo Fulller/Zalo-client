@@ -91,7 +91,7 @@ function UpdataUser({ data }) {
   }
   return (
     <div className={cx("updateuser")}>
-      <h3>Cập nhật thông tin</h3>
+      <h3>{text.updateinfo}</h3>
       <div className={cx("top")}>
         <input
           type="file"

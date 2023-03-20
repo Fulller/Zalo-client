@@ -2,6 +2,7 @@ import layoutStyle from "../DetailContent.module.scss";
 import classNames from "classnames/bind";
 import { useSelector } from "react-redux";
 import selector from "../../../redux/selector";
+import useText from "../../../hooks/useText";
 
 import Header from "../components/Header";
 import InputText from "../components/InputText";
@@ -12,6 +13,7 @@ import Image from "../../../Images";
 const cxlayout = classNames.bind(layoutStyle);
 function ChatFriend({ data }) {
   let showinfocontent = useSelector(selector.showinfocontent);
+  let text = useText("detailcontent");
   return (
     <div className={cxlayout("layout2")}>
       <div className={cxlayout("left")}>
@@ -33,7 +35,7 @@ function ChatFriend({ data }) {
       <div
         className={cxlayout(["right", !showinfocontent && "hideInfoContent"])}
       >
-        <div className={cxlayout("title")}>Thông tin hội thoại</div>
+        <div className={cxlayout("title")}>{text.infoconversation}</div>
         <InfoConversation data={data}></InfoConversation>
       </div>
     </div>

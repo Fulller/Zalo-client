@@ -60,7 +60,6 @@ export default {
       addfriend: "Kết bạn",
       isfriend: "Đã là bạn",
       findinmessage: "Tìm kiếm trong tin nhắn",
-      infoconversation: "Thông tin hội thoại",
       inputmesageto: "Nhập tin nhắn tới ",
       send: "GỬI",
       you: "Bạn",
