@@ -1,4 +1,5 @@
-const serverurl = "http://localhost:3001";
+const serverurl = process.env.REACT_APP_SERVERURL;
+const socket = process.env.REACT_APP_SOCKETURL;
 
 export default {
   server: {
@@ -12,5 +13,5 @@ export default {
       return serverurl + "/api/image/get?id=" + id;
     },
   },
-  socket: "http://localhost:3002",
+  socket: socket,
 };

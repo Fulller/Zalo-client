@@ -13,6 +13,15 @@ let initialState = {
     data: {},
   },
   showinfocontent: false,
+  searchnavlist: {
+    isShow: false,
+    data: "",
+  },
+  viewphotos: {
+    title: "",
+    index: 0,
+    photos: [],
+  },
 };
 export default createSlice({
   name: "setting",
@@ -39,6 +48,16 @@ export default createSlice({
     },
     toggleShowinfocontent: (state, action) => {
       state.showinfocontent = !state.showinfocontent;
+      LocalStorare.set("setting", state);
+      return state;
+    },
+    setSearchnavlist: (state, action) => {
+      state.searchnavlist = action.payload;
+      LocalStorare.set("setting", state);
+      return state;
+    },
+    setViewphotos: (state, action) => {
+      state.viewphotos = action.payload;
       LocalStorare.set("setting", state);
       return state;
     },

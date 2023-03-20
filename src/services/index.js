@@ -1,6 +1,5 @@
 import axios from "axios";
 import url from "../tools/url";
-import imageBase64 from "../tools/imageBase64";
 export default {
   login: function (body) {
     return axios({
@@ -135,15 +134,7 @@ export default {
       data: bodyFormData,
     }).then((data) => data.data);
   },
-  getImage: function (body) {
-    return axios({
-      method: "get",
-      url: url.server.imageAPI("/get"),
-      params: {
-        id: body,
-      },
-    }).then((data) => imageBase64(data?.data?.data));
-  },
+
   updatamessageshistory: function (body) {
     return axios({
       method: "put",

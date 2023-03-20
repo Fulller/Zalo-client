@@ -2,7 +2,7 @@ import style from "./SearchBox.module.scss";
 import className from "classnames/bind";
 import useText from "../../../hooks/useText";
 import Tippy from "@tippyjs/react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import settingSlide from "../../../redux/slides/setting";
 import { useDispatch } from "react-redux";
 
@@ -70,7 +70,10 @@ function SearchBox() {
           </button>
         </Tippy> */}
       </div>
-      <div className={cx(["closebtn", !isInputFocus && "hide"])}>
+      <div
+        className={cx(["closebtn", !isInputFocus && "hide"])}
+        onClick={() => setSearchtext("")}
+      >
         {text.close}
       </div>
     </div>

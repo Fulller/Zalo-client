@@ -65,7 +65,7 @@ export default {
       send: "GỬI",
       you: "Bạn",
       sendimage: "Gửi hình ảnh",
-      image: "Ảnh",
+      image: "Hình ảnh",
       seeall: "Xem tất cả",
       link: "Link",
     },

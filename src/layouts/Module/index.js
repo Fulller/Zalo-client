@@ -23,6 +23,7 @@ function Module() {
         return <InfoUser data={module.data}></InfoUser>;
       case "updateuser":
         return <UpdataUser data={module.data}></UpdataUser>;
+
       default:
         return <></>;
     }

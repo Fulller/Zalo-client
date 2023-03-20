@@ -10,7 +10,7 @@ function useAutoNavigate() {
   useEffect(() => {
     if (href.includes("login")) {
       if (user) {
-        navigate("/");
+        navigate("/message");
       }
     } else {
       if (user == null) {

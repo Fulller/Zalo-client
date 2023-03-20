@@ -5,6 +5,7 @@ import MainLayout from "../layouts/MainLayout";
 import PhoneBookNav from "../pages/NavList/Phonebook";
 import MessageHistoryNav from "../pages/NavList/MessagesHistory";
 import Test from "../pages/Test";
+import ViewPhotos from "../pages/ViewPhotos";
 
 function route(path, Element, Layout) {
   this.path = path;
@@ -22,6 +23,7 @@ export default {
     new route("", [MessageHistoryNav], MainLayout),
     new route("message", [MessageHistoryNav], MainLayout),
     new route("phonebook", [PhoneBookNav], MainLayout),
+    new route("viewphotos", ViewPhotos),
     new route("*", NoPage),
   ],
 };

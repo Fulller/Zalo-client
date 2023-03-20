@@ -46,10 +46,34 @@ function useSocket(socket) {
         userName: user.userName,
         type: "requesFriends",
       });
-      console.log({ requesFriends });
       dispatch(datauserSlide.actions.setRequestFriends(requesFriends.data));
     });
     socket.on("acceptedrequestfriend", async () => {
+      // let friends = await services.gettypefriends({
+      //   userName: user.userName,
+      //   type: "friends",
+      // });
+      // let friendsMap = {};
+      // friendsMap[user.userName] = user;
+      // for (let friend of friends.data) {
+      //   friendsMap[friend.userName] = friend;
+      // }
+      // let requesFriends = await services.gettypefriends({
+      //   userName: user.userName,
+      //   type: "requesFriends",
+      // });
+      // let conversations = {};
+      // for (let friend of friends.data) {
+      //   let conversationId = mergeUserName(user.userName, friend.userName);
+      //   let response = await services.getconversation({ conversationId });
+      //   if (response.isSuccess) {
+      //     conversations[conversationId] = response?.data;
+      //   }
+      // }
+      // dispatch(datauserSlide.actions.setFriends(friends.data));
+      // dispatch(datauserSlide.actions.setFriendsMap(friendsMap));
+      // dispatch(datauserSlide.actions.setRequestFriends(requesFriends.data));
+      // dispatch(datauserSlide.actions.setConversations(conversations));
       let friends = await services.gettypefriends({
         userName: user.userName,
         type: "friends",
@@ -63,18 +87,33 @@ function useSocket(socket) {
         userName: user.userName,
         type: "requesFriends",
       });
+      let wanttobeFriends = await services.gettypefriends({
+        userName: user.userName,
+        type: "wanttobeFriends",
+      });
       let conversations = {};
       for (let friend of friends.data) {
         let conversationId = mergeUserName(user.userName, friend.userName);
         let response = await services.getconversation({ conversationId });
-        if (response.isSuccess) {
+        let responseMessages = await services.getmessageV2({
+          conversationId,
+        });
+        if (response.isSuccess && responseMessages.isSuccess) {
+          response.data.messages = responseMessages.data;
           conversations[conversationId] = response?.data;
         }
       }
+      let messageshistory =
+        (await services.getoptional({
+          userName: user.userName,
+          optional: "messagesHistory",
+        })) || [];
       dispatch(datauserSlide.actions.setFriends(friends.data));
       dispatch(datauserSlide.actions.setFriendsMap(friendsMap));
       dispatch(datauserSlide.actions.setRequestFriends(requesFriends.data));
+      dispatch(datauserSlide.actions.setWanttobeFriends(wanttobeFriends.data));
       dispatch(datauserSlide.actions.setConversations(conversations));
+      dispatch(datauserSlide.actions.setMessagesHistory(messageshistory.data));
     });
     return () => {
       socket.off("connect");

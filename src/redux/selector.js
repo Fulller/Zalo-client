@@ -37,4 +37,10 @@ export default {
       return state.datauser.messageshistory;
     },
   },
+  searchnavlist: (state) => {
+    return state.setting.searchnavlist;
+  },
+  viewphotos: (state) => {
+    return state.setting.viewphotos;
+  },
 };

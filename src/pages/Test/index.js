@@ -1,6 +1,5 @@
-import { ReactTinyLink } from "react-tiny-link";
-import { HelmetProvider, Helmet } from "react-helmet-async";
 function Test() {
+  console.log(process.env);
   return <></>;
 }
 export default Test;

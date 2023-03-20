@@ -9,7 +9,7 @@ function NoPage() {
   let text = useText("nopage");
   return (
     <div className={cx("wrapper")}>
-      <Link className={cx("backhome")} to="/">
+      <Link className={cx("backhome")} to="/message">
         <img src={Images.nopage}></img>
       </Link>
     </div>

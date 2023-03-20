@@ -13,7 +13,9 @@ function Welcome() {
   function handleChangeSlide(type) {
     switch (type) {
       case "prev": {
-        setCurrentSlide((currentSlide - 1) % dataWelcome.length);
+        setCurrentSlide(
+          (currentSlide + dataWelcome.length - 1) % dataWelcome.length
+        );
         break;
       }
       case "next": {

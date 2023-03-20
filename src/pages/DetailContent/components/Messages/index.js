@@ -2,16 +2,20 @@ import style from "./Messages.module.scss";
 import classNames from "classnames/bind";
 import { useState, useEffect, useRef } from "react";
 import mergeUserName from "../../../../tools/mergeUserName";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import selector from "../../../../redux/selector";
 import Image from "../../../../Images";
 import Avatar from "../../../components/Avatar";
+import settingSlide from "../../../../redux/slides/setting";
 
 const cx = classNames.bind(style);
 function Messages({ data }) {
+  let user = useSelector(selector.user);
   let dataMessages = data.data;
+  let dispatch = useDispatch();
   let friendsMap = useSelector(selector.datauser.friendsMap);
   let showinfocontent = useSelector(selector.showinfocontent);
+  let [photos, setPhotos] = useState([]);
   let conversationId =
     data.type == "chat-friend"
       ? mergeUserName(dataMessages.user.userName, dataMessages.friend.userName)
@@ -28,6 +32,17 @@ function Messages({ data }) {
   }, []);
   useEffect(() => {
     messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
+    if (conversation) {
+      setPhotos(
+        conversation.messages
+          .filter((message) => {
+            return message.type == "image";
+          })
+          .map((messageImage) => {
+            return messageImage.content;
+          })
+      );
+    }
   }, [conversation]);
   function Content({ message, time }) {
     switch (message.type) {
@@ -60,6 +75,20 @@ function Messages({ data }) {
               className={cx(!showinfocontent && "wide")}
               src={message.content}
               id
+              viewphotos={() =>
+                dispatch(
+                  settingSlide.actions.setViewphotos({
+                    title:
+                      friendsMap[
+                        conversation.members.find(
+                          (member) => member != user.userName
+                        )
+                      ]?.showName,
+                    index: photos.indexOf(message.content),
+                    photos: photos,
+                  })
+                )
+              }
             ></Image>
             <div className={cx("time")}>
               {(time[0] * 1 + 7) % 24}:{time[1]}
@@ -72,7 +101,8 @@ function Messages({ data }) {
     <div className={cx("messages")} ref={messagesRef}>
       {conversation &&
         conversation.messages.map((message, index) => {
-          let avatar = friendsMap[message?.sender]?.avatar;
+          let sender = friendsMap[message?.sender];
+          let avatar = sender?.avatar;
           let time = message.createdAt.slice(11, 16).split(":");
           let messageType = [];
           if (message.sender != conversation.messages[index - 1]?.sender) {
@@ -81,7 +111,6 @@ function Messages({ data }) {
           if (message.sender != conversation.messages[index + 1]?.sender) {
             messageType.push("type2");
           }
-
           return (
             <div
               key={message._id}
@@ -91,7 +120,7 @@ function Messages({ data }) {
               ])}
             >
               <div className={cx(["message", ...messageType])}>
-                <Avatar data={friendsMap[message?.sender]}>
+                <Avatar data={sender}>
                   <Image className={cx("avatar")} src={avatar} id></Image>
                 </Avatar>
                 <Content message={message} time={time}></Content>

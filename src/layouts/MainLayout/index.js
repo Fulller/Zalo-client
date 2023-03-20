@@ -7,6 +7,7 @@ import useAutoNavigate from "../../hooks/useAutoNavigate";
 import DetailContent from "../../pages/DetailContent";
 import { useSelector } from "react-redux";
 import selector from "../../redux/selector";
+import SearchNavList from "./SearchNavList";
 
 const cx = classNames.bind(style);
 function MainLayout({ elements }) {
