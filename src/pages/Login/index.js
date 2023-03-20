@@ -8,6 +8,7 @@ import services from "../../services";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import userSlide from "../../redux/slides/user";
+import Language from "../components/Language";
 
 const cx = classnames.bind(style);
 const eyeicon = {
@@ -98,6 +99,7 @@ function Login() {
             <Link to="/register"> {text.registernewaccount} </Link>
           </h5>
         </div>
+        <Language></Language>
       </div>
       <svg
         xmlns="http://www.w3.org/2000/svg"

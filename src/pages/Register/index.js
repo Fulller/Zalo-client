@@ -7,6 +7,7 @@ import services from "../../services";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import userSlide from "../../redux/slides/user";
+import Language from "../components/Language";
 
 const cx = classnames.bind(style);
 function Register() {
@@ -111,6 +112,7 @@ function Register() {
             <Link to="/login"> {text.backlogin} </Link>
           </h5>
         </div>
+        <Language></Language>
       </div>
       <svg
         xmlns="http://www.w3.org/2000/svg"

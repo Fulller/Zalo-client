@@ -29,7 +29,9 @@ export default createSlice({
   initialState: LocalStorare.get("setting", initialState),
   reducers: {
     setDefault: (state, action) => {
+      let language = state.language;
       state = initialState;
+      state.language = language;
       return state;
     },
     setLanguage: (state, action) => {

@@ -1,0 +1,12 @@
+.language {
+  margin-top: 20px;
+  button {
+    background-color: transparent;
+    color: blue;
+    padding: 8px;
+  }
+  .active {
+    font-weight: 600;
+    text-decoration: underline;
+  }
+}
