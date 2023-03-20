@@ -10,7 +10,7 @@ import { useMediaQuery } from "react-responsive";
 
 const cx = classNames.bind(style);
 function MessagesHistory() {
-  let isMobile = useMediaQuery({ query: "(max-width: 500px)" });
+  let isMobile = useMediaQuery({ query: "(max-width: 700px)" });
   let user = useSelector(selector.user);
   let friendsMap = useSelector(selector.datauser.friendsMap);
   let detailcontent = useSelector(selector.detailcontent);

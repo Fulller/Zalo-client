@@ -12,7 +12,7 @@ import { useMediaQuery } from "react-responsive";
 
 const cx = classNames.bind(style);
 function MainLayout({ elements }) {
-  let isMobile = useMediaQuery({ query: "(max-width: 500px)" });
+  let isMobile = useMediaQuery({ query: "(max-width: 700px)" });
   let detailcontent = useSelector(selector.detailcontent);
   let [NavList] = elements;
   let user = useSelector(selector.user);

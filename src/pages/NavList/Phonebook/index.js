@@ -10,7 +10,7 @@ let cx = classnames.bind(style);
 
 function Phonebook() {
   let text = useText("navlist");
-  let isMobile = useMediaQuery({ query: "(max-width: 500px)" });
+  let isMobile = useMediaQuery({ query: "(max-width: 700px)" });
 
   const listFeature = [
     {

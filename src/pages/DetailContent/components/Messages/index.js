@@ -11,7 +11,7 @@ import { useMediaQuery } from "react-responsive";
 
 const cx = classNames.bind(style);
 function Messages({ data }) {
-  let isMobile = useMediaQuery({ query: "(max-width: 500px)" });
+  let isMobile = useMediaQuery({ query: "(max-width: 700px)" });
   let user = useSelector(selector.user);
   let dataMessages = data.data;
   let dispatch = useDispatch();
@@ -123,9 +123,12 @@ function Messages({ data }) {
               ])}
             >
               <div className={cx(["message", ...messageType])}>
-                <Avatar data={sender}>
-                  <Image className={cx("avatar")} src={avatar} id></Image>
-                </Avatar>
+                {(!isMobile ||
+                  (isMobile && sender.userName != user.userName)) && (
+                  <Avatar data={sender}>
+                    <Image className={cx("avatar")} src={avatar} id></Image>
+                  </Avatar>
+                )}
                 <Content message={message} time={time}></Content>
               </div>
             </div>

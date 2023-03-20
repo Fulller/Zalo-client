@@ -17,7 +17,7 @@ import { useMediaQuery } from "react-responsive";
 let timeAgo;
 const socket = io(url.socket);
 function Global({ children }) {
-  let isMobile = useMediaQuery({ query: "(max-width: 500px)" });
+  let isMobile = useMediaQuery({ query: "(max-width: 700px)" });
   let user = useSelector(selector.user);
   let dispatch = useDispatch();
   let language = useSelector(selector.language);

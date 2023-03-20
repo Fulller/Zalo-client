@@ -12,7 +12,7 @@ import { useEffect } from "react";
 
 const cx = classNames.bind(style);
 function Header({ data }) {
-  let isMobile = useMediaQuery({ query: "(max-width: 500px)" });
+  let isMobile = useMediaQuery({ query: "(max-width: 700px)" });
   let dispatch = useDispatch();
   let text = useText("detailcontent");
   let isShowDetail = useSelector(selector.showinfocontent);
