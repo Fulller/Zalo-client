@@ -10,10 +10,12 @@ import userSlide from "../../../redux/slides/user";
 import settingSlide from "../../../redux/slides/setting";
 import services from "../../../services";
 import { useState } from "react";
+import { socket } from "../../../components/Global";
 
 const cx = classNames.bind(style);
 function UpdataUser({ data }) {
   let user = useSelector(selector.user);
+  let friends = useSelector(selector.datauser.friends);
   let dispatch = useDispatch();
   let [isUpdate, setIsUpdate] = useState(false);
   let [file, setFile] = useState(null);
@@ -75,6 +77,10 @@ function UpdataUser({ data }) {
             background: background,
           })
         );
+        socket.emit("updateinfo", {
+          userName: user.userName,
+          friends: friends,
+        });
       }
       dispatch(
         settingSlide.actions.setModule({

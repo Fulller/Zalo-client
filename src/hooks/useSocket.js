@@ -115,6 +115,12 @@ function useSocket(socket) {
       dispatch(datauserSlide.actions.setConversations(conversations));
       dispatch(datauserSlide.actions.setMessagesHistory(messageshistory.data));
     });
+    socket.on("friendupdateinfo", async (usernameFriend) => {
+      let friend = await services.getinfouser({ userName: usernameFriend });
+      if (friend.isSuccess) {
+        dispatch(datauserSlide.actions.setFriendToFriendMap(friend.data));
+      }
+    });
     return () => {
       socket.off("connect");
       socket.off("disconnect");

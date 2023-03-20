@@ -76,5 +76,14 @@ export default createSlice({
       state.avatarMap = action.payload;
       return state;
     },
+    setFriendToFriendMap: (state, action) => {
+      state.friendsMap[action.payload.userName] = action.payload;
+      for (let indexFriend in state.friends) {
+        if (state.friends[indexFriend].userName == action.payload.userName) {
+          state.friends[indexFriend] = action.payload;
+        }
+      }
+      return state;
+    },
   },
 });
