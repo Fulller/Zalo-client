@@ -12,10 +12,12 @@ import UserPopper from "../../../components/Poppers/UserPopper";
 import SettingPoper from "../../../components/Poppers/SettingPopper";
 import Image from "../../../Images";
 import selector from "../../../redux/selector";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import settingSlide from "../../../redux/slides/setting";
 
 const cx = classNames.bind(style);
 function Navbar() {
+  let dispatch = useDispatch();
   let [visibleUserPopper, setVisibleUserPopper] = useState(false);
   let [visibleSettingPopper, setVisileSettingPopper] = useState(false);
   let data = useNavData();
@@ -65,6 +67,9 @@ function Navbar() {
                   ])}
                   to={navitemdata.link}
                   key={Math.random()}
+                  onClick={() =>
+                    dispatch(settingSlide.actions.setIsshownavlist(true))
+                  }
                 >
                   {navitemdata.icon}
                 </Link>

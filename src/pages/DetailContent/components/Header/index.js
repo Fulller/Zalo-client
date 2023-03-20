@@ -7,12 +7,20 @@ import settingSlide from "../../../../redux/slides/setting";
 import Image from "../../../../Images";
 import Avatar from "../../../components/Avatar";
 import selector from "../../../../redux/selector";
+import { useMediaQuery } from "react-responsive";
+import { useEffect } from "react";
 
 const cx = classNames.bind(style);
 function Header({ data }) {
+  let isMobile = useMediaQuery({ query: "(max-width: 500px)" });
   let dispatch = useDispatch();
   let text = useText("detailcontent");
   let isShowDetail = useSelector(selector.showinfocontent);
+  useEffect(() => {
+    if (isMobile) {
+      dispatch(settingSlide.actions.setshowinfocontent(false));
+    }
+  }, [isMobile]);
   function Main() {
     switch (data.type) {
       case "chat-friend":
@@ -34,21 +42,23 @@ function Header({ data }) {
                   <span className="material-symbols-rounded">search</span>
                 </button>
               </Tippy>
-              <Tippy
-                delay={[500, 0]}
-                content={<span>{text.infoconversation}</span>}
-              >
-                <button
-                  className={cx(isShowDetail && "active")}
-                  onClick={() =>
-                    dispatch(settingSlide.actions.toggleShowinfocontent())
-                  }
+              {!isMobile && (
+                <Tippy
+                  delay={[500, 0]}
+                  content={<span>{text.infoconversation}</span>}
                 >
-                  <span className="material-symbols-rounded">
-                    right_panel_close
-                  </span>
-                </button>
-              </Tippy>
+                  <button
+                    className={cx(isShowDetail && "active")}
+                    onClick={() =>
+                      dispatch(settingSlide.actions.toggleShowinfocontent())
+                    }
+                  >
+                    <span className="material-symbols-rounded">
+                      right_panel_close
+                    </span>
+                  </button>
+                </Tippy>
+              )}
             </div>
           </>
         );

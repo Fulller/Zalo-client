@@ -7,9 +7,11 @@ import selector from "../../../../redux/selector";
 import Image from "../../../../Images";
 import Avatar from "../../../components/Avatar";
 import settingSlide from "../../../../redux/slides/setting";
+import { useMediaQuery } from "react-responsive";
 
 const cx = classNames.bind(style);
 function Messages({ data }) {
+  let isMobile = useMediaQuery({ query: "(max-width: 500px)" });
   let user = useSelector(selector.user);
   let dataMessages = data.data;
   let dispatch = useDispatch();
@@ -117,6 +119,7 @@ function Messages({ data }) {
               className={cx([
                 "wrappermessage",
                 dataMessages.user.userName == message.sender && "right",
+                isMobile && "ismobile",
               ])}
             >
               <div className={cx(["message", ...messageType])}>

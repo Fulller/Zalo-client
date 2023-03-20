@@ -6,9 +6,11 @@ import selector from "../../../redux/selector";
 import { useSelector, useDispatch } from "react-redux";
 import UserItem from "../../components/UserItem";
 import { useEffect } from "react";
+import { useMediaQuery } from "react-responsive";
 
 const cx = classNames.bind(style);
 function MessagesHistory() {
+  let isMobile = useMediaQuery({ query: "(max-width: 500px)" });
   let user = useSelector(selector.user);
   let friendsMap = useSelector(selector.datauser.friendsMap);
   let detailcontent = useSelector(selector.detailcontent);
@@ -20,21 +22,23 @@ function MessagesHistory() {
     }
   );
   useEffect(() => {
-    if (messagesHistory[0]) {
-      dispatch(
-        settingSlide.actions.detailcontent({
-          type: "chat-friend",
-          data: {
-            user: user,
-            friend:
-              friendsMap[
-                messagesHistory[0].members.find((member) => {
-                  return member != user.userName;
-                })
-              ],
-          },
-        })
-      );
+    if (!isMobile) {
+      if (messagesHistory[0]) {
+        dispatch(
+          settingSlide.actions.detailcontent({
+            type: "chat-friend",
+            data: {
+              user: user,
+              friend:
+                friendsMap[
+                  messagesHistory[0].members.find((member) => {
+                    return member != user.userName;
+                  })
+                ],
+            },
+          })
+        );
+      }
     }
   }, []);
   return (

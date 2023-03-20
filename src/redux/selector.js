@@ -43,4 +43,7 @@ export default {
   viewphotos: (state) => {
     return state.setting.viewphotos;
   },
+  isshownavlist: (state) => {
+    return state.setting.isshownavlist;
+  },
 };

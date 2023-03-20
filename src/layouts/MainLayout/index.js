@@ -8,12 +8,16 @@ import DetailContent from "../../pages/DetailContent";
 import { useSelector } from "react-redux";
 import selector from "../../redux/selector";
 import SearchNavList from "./SearchNavList";
+import { useMediaQuery } from "react-responsive";
 
 const cx = classNames.bind(style);
 function MainLayout({ elements }) {
+  let isMobile = useMediaQuery({ query: "(max-width: 500px)" });
+  let detailcontent = useSelector(selector.detailcontent);
   let [NavList] = elements;
   let user = useSelector(selector.user);
   useAutoNavigate();
+  let isshownavlist = useSelector(selector.isshownavlist);
   return (
     <>
       {user && (
@@ -21,17 +25,21 @@ function MainLayout({ elements }) {
           <div className={cx("part1")}>
             <Navbar></Navbar>
           </div>
-          <div className={cx("part2")}>
-            <div className={cx("part3")}>
-              <SearchBox></SearchBox>
+          {(isshownavlist || !isMobile) && (
+            <div className={cx(["part2", isMobile && "part2-mobile"])}>
+              <div className={cx("part3")}>
+                <SearchBox></SearchBox>
+              </div>
+              <div className={cx("part4")}>
+                <NavList></NavList>
+              </div>
             </div>
-            <div className={cx("part4")}>
-              <NavList></NavList>
+          )}
+          {(!isMobile || (isMobile && !isshownavlist)) && (
+            <div className={cx("part5")}>
+              <DetailContent></DetailContent>
             </div>
-          </div>
-          <div className={cx("part5")}>
-            <DetailContent></DetailContent>
-          </div>
+          )}
           <Module></Module>
         </div>
       )}

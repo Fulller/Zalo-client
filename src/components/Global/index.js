@@ -12,14 +12,17 @@ import useSocket from "../../hooks/useSocket";
 import TimeAgo from "javascript-time-ago";
 import vi from "javascript-time-ago/locale/vi";
 import en from "javascript-time-ago/locale/en";
+import { useMediaQuery } from "react-responsive";
 
 let timeAgo;
 const socket = io(url.socket);
 function Global({ children }) {
+  let isMobile = useMediaQuery({ query: "(max-width: 500px)" });
   let user = useSelector(selector.user);
   let dispatch = useDispatch();
   let language = useSelector(selector.language);
   let isConnect = useSocket(socket);
+
   useEffect(() => {
     if (language == "vi") {
       TimeAgo.addDefaultLocale(vi);

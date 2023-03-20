@@ -96,6 +96,23 @@
       }
     }
   }
+  .ismobile {
+    .message {
+      .content {
+        a > p.wide,
+        p,
+        p.wid {
+          max-width: 200px;
+        }
+      }
+      .content-image {
+        img,
+        img.wide {
+          max-width: 200px;
+        }
+      }
+    }
+  }
   .right {
     justify-content: right;
     .message {

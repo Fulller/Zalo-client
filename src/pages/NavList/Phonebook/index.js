@@ -4,11 +4,13 @@ import { useEffect, useState } from "react";
 import settingSlide from "../../../redux/slides/setting";
 import { useDispatch } from "react-redux";
 import useText from "../../../hooks/useText";
+import { useMediaQuery } from "react-responsive";
 
 let cx = classnames.bind(style);
 
 function Phonebook() {
   let text = useText("navlist");
+  let isMobile = useMediaQuery({ query: "(max-width: 500px)" });
 
   const listFeature = [
     {
@@ -46,7 +48,12 @@ function Phonebook() {
               feature == featureItem.id && "active",
             ])}
             key={featureItem.id}
-            onClick={() => handleClickFeature(featureItem.id)}
+            onClick={() => {
+              handleClickFeature(featureItem.id);
+              if (isMobile) {
+                dispatch(settingSlide.actions.setIsshownavlist(false));
+              }
+            }}
           >
             <span className="material-symbols-rounded">{featureItem.icon}</span>
             <h4>{featureItem.title}</h4>

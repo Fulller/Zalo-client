@@ -39,6 +39,7 @@ function UserItem({
         },
       })
     );
+    dispatch(settingSlide.actions.setIsshownavlist(false));
   }
   function LastMessage({ data }) {
     switch (data.type) {
