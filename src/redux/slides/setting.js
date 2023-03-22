@@ -23,6 +23,11 @@ let initialState = {
     photos: [],
   },
   isshownavlist: true,
+  notification: {
+    isShow: false,
+    type: "",
+    data: {},
+  },
 };
 export default createSlice({
   name: "setting",
@@ -71,6 +76,11 @@ export default createSlice({
     },
     setIsshownavlist: (state, action) => {
       state.isshownavlist = action.payload;
+      LocalStorare.set("setting", state);
+      return state;
+    },
+    setNotification: (state, action) => {
+      state.notification = action.payload;
       LocalStorare.set("setting", state);
       return state;
     },

@@ -3,11 +3,11 @@ import SearchBox from "./SearchBox";
 import style from "./Mainlayout.module.scss";
 import classNames from "classnames/bind";
 import Module from "../Module";
+import Notification from "../Notification";
 import useAutoNavigate from "../../hooks/useAutoNavigate";
 import DetailContent from "../../pages/DetailContent";
 import { useSelector } from "react-redux";
 import selector from "../../redux/selector";
-import SearchNavList from "./SearchNavList";
 import { useMediaQuery } from "react-responsive";
 
 const cx = classNames.bind(style);
@@ -41,6 +41,7 @@ function MainLayout({ elements }) {
             </div>
           )}
           <Module></Module>
+          <Notification></Notification>
         </div>
       )}
     </>

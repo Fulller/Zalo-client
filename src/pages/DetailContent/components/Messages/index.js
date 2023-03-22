@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import selector from "../../../../redux/selector";
 import Image from "../../../../Images";
 import Avatar from "../../../components/Avatar";
+import MessagePopper from "../../../../components/Poppers/MessagePopper";
 import settingSlide from "../../../../redux/slides/setting";
 import { useMediaQuery } from "react-responsive";
 
@@ -113,6 +114,9 @@ function Messages({ data }) {
           if (message.sender != conversation.messages[index + 1]?.sender) {
             messageType.push("type2");
           }
+          let isDeleteOnMySide = !!message.deleteBy.find(
+            (username) => username == user.userName
+          );
           return (
             <div
               key={message._id}
@@ -120,6 +124,7 @@ function Messages({ data }) {
                 "wrappermessage",
                 dataMessages.user.userName == message.sender && "right",
                 isMobile && "ismobile",
+                isDeleteOnMySide && "isDeleteOnMySide",
               ])}
             >
               <div className={cx(["message", ...messageType])}>
@@ -130,6 +135,10 @@ function Messages({ data }) {
                   </Avatar>
                 )}
                 <Content message={message} time={time}></Content>
+                <MessagePopper
+                  data={message}
+                  className={cx("popper")}
+                ></MessagePopper>
               </div>
             </div>
           );

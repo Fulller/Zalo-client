@@ -85,5 +85,21 @@ export default createSlice({
       }
       return state;
     },
+    deleteonmyside: (state, action) => {
+      for (let index in state.conversations[
+        action.payload.message.conversationId
+      ].messages) {
+        if (
+          state.conversations[action.payload.message.conversationId].messages[
+            index
+          ]._id == action.payload.message._id
+        ) {
+          state.conversations[action.payload.message.conversationId].messages[
+            index
+          ] = action.payload.message;
+        }
+      }
+      return state;
+    },
   },
 });

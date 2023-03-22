@@ -102,6 +102,11 @@ export default {
       setting: "Cài đặt",
       logout: "Đăng xuất",
       language: "Ngôn ngữ",
+      copymessage: "Copy tin nhắn",
+      copyimage: "Copy hình ảnh",
+      copylink: "Copy link",
+      recall: "Thu hồi",
+      deletemyside: "Xóa ở phía tôi",
     },
     welcome: {
       title: "Chào mừng đến với ",
@@ -256,6 +261,11 @@ export default {
       setting: "Setting",
       logout: "Log out",
       language: "Language",
+      copymessage: "Copy message",
+      copyimage: "Copy image",
+      copylink: "Copy link",
+      recall: "Recall",
+      deletemyside: "Delete on my side",
     },
     welcome: {
       title: "Welcome to ",

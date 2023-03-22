@@ -21,7 +21,6 @@ function Category({ category, data, cx, text }) {
           </div>
         );
       case "link":
-        data = data.reverse();
         if (data.length > 3) {
           data.length = 3;
         }

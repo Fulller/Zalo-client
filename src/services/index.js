@@ -170,4 +170,14 @@ export default {
       },
     }).then((data) => data.data);
   },
+  deletemessageonmyside: function (body) {
+    return axios({
+      method: "delete",
+      url: url.server.userAPI("/deletemessageonmyside"),
+      data: {
+        id: body.id,
+        userName: body.userName,
+      },
+    }).then((data) => data.data);
+  },
 };

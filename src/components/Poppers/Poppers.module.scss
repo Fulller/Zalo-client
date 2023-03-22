@@ -35,6 +35,12 @@
       background-color: rgba(0, 0, 0, 0.05);
     }
   }
+  .important {
+    .icon span,
+    .title-item {
+      color: red;
+    }
+  }
 }
 .child-popper {
   background-color: white;

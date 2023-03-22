@@ -1,0 +1,32 @@
+.notification {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  animation: showandhide 2s linear;
+}
+@keyframes showandhide {
+  0% {
+    transform: translateX(0px);
+  }
+  25% {
+    transform: translateX(-100px);
+  }
+  75% {
+    transform: translateX(-100px);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(0px);
+  }
+}
+.copy {
+  background-color: rgb(143, 143, 250);
+  padding: 8px 16px;
+  color: white;
+  border-radius: 100px 0px 100px 0px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+}
+.hide {
+  display: none;
+}

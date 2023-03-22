@@ -46,4 +46,7 @@ export default {
   isshownavlist: (state) => {
     return state.setting.isshownavlist;
   },
+  notification: (state) => {
+    return state.setting.notification;
+  },
 };
