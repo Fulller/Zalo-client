@@ -9,9 +9,14 @@ import Avatar from "../../../components/Avatar";
 import MessagePopper from "../../../../components/Poppers/MessagePopper";
 import settingSlide from "../../../../redux/slides/setting";
 import { useMediaQuery } from "react-responsive";
+import useText from "../../../../hooks/useText";
+import services from "../../../../services";
+import datauserSlide from "../../../../redux/slides/datauser";
+import { socket } from "../../../../components/Global";
 
 const cx = classNames.bind(style);
 function Messages({ data, friend }) {
+  let text = useText("detailcontent");
   let isMobile = useMediaQuery({ query: "(max-width: 700px)" });
   let user = useSelector(selector.user);
   let dataMessages = data.data;
@@ -47,16 +52,50 @@ function Messages({ data, friend }) {
       );
     }
   }, [conversation]);
-  function Content({ message, time }) {
+  useEffect(() => {
+    let lastMessage = conversation?.messages[conversation?.messages.length - 1];
+    if (lastMessage) {
+      if (
+        lastMessage?.status != "seen" &&
+        lastMessage?.sender != user.userName
+      ) {
+        (async function () {
+          let response = await services.seenmessage({
+            id: lastMessage._id,
+          });
+          if (response.isSuccess) {
+            socket.emit("seenmessage", {
+              userNameFriend: friend.userName,
+              message: response.data,
+            });
+            dispatch(
+              datauserSlide.actions.updatemessage({ message: response.data })
+            );
+          }
+        })();
+      }
+    }
+  }, [conversation?.messages]);
+  function Content({ message, time, index }) {
+    function TimeAndStatus() {
+      return (
+        <div className={cx("time-and-status")}>
+          <span className={cx("time")}>
+            {(time[0] * 1 + 7) % 24}:{time[1]}
+          </span>
+          {conversation.messages.length - 1 == index && (
+            <span className={cx("status")}>{text[message.status]}</span>
+          )}
+        </div>
+      );
+    }
     if (message.isRecall) {
       return (
         <div className={cx("content")}>
           <p className={cx([!showinfocontent && "wide", "recall"])}>
             Tin nhắn đã được thu hồi
           </p>
-          <div className={cx("time")}>
-            {(time[0] * 1 + 7) % 24}:{time[1]}
-          </div>
+          <TimeAndStatus></TimeAndStatus>
         </div>
       );
     }
@@ -65,9 +104,7 @@ function Messages({ data, friend }) {
         return (
           <div className={cx("content")}>
             <p className={cx(!showinfocontent && "wide")}>{message.content}</p>
-            <div className={cx("time")}>
-              {(time[0] * 1 + 7) % 24}:{time[1]}
-            </div>
+            <TimeAndStatus></TimeAndStatus>
           </div>
         );
       case "link":
@@ -78,9 +115,7 @@ function Messages({ data, friend }) {
                 {message.content}
               </p>
             </a>
-            <div className={cx("time")}>
-              {(time[0] * 1 + 7) % 24}:{time[1]}
-            </div>
+            <TimeAndStatus></TimeAndStatus>
           </div>
         );
       case "image":
@@ -105,9 +140,7 @@ function Messages({ data, friend }) {
                 )
               }
             ></Image>
-            <div className={cx("time")}>
-              {(time[0] * 1 + 7) % 24}:{time[1]}
-            </div>
+            <TimeAndStatus></TimeAndStatus>
           </div>
         );
     }
@@ -146,7 +179,7 @@ function Messages({ data, friend }) {
                     <Image className={cx("avatar")} src={avatar} id></Image>
                   </Avatar>
                 )}
-                <Content message={message} time={time}></Content>
+                <Content message={message} time={time} index={index}></Content>
                 <MessagePopper
                   data={message}
                   className={cx("popper")}

@@ -62,11 +62,23 @@
         p.wide {
           max-width: 600px;
         }
-        .time {
-          color: gray;
-          font-size: 14px;
-          padding-top: 12px;
-          display: none;
+
+        .time-and-status {
+          display: flex;
+          justify-content: space-between;
+          .time {
+            color: gray;
+            font-size: 14px;
+            padding-top: 12px;
+            display: none;
+          }
+          .status {
+            color: gray;
+            font-size: 14px;
+            padding-top: 12px;
+            margin-left: 8px;
+            display: none;
+          }
         }
         .recall {
           color: gray;
@@ -98,13 +110,17 @@
     }
     .type2 {
       .content {
-        .time {
-          display: block;
+        .time-and-status {
+          .time {
+            display: block;
+          }
         }
       }
       .content-image {
-        .time {
-          display: block;
+        .time-and-status {
+          .time {
+            display: block;
+          }
         }
       }
     }
@@ -132,9 +148,19 @@
       flex-direction: row-reverse;
       .content {
         background-color: rgb(219, 219, 246);
+        .time-and-status {
+          .status {
+            display: block;
+          }
+        }
       }
       .content-image {
         background-color: transparent;
+        .time-and-status {
+          .status {
+            display: block;
+          }
+        }
       }
     }
   }

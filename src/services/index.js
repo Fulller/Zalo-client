@@ -190,4 +190,13 @@ export default {
       },
     }).then((data) => data.data);
   },
+  seenmessage: function (body) {
+    return axios({
+      method: "put",
+      url: url.server.userAPI("/seenmessage"),
+      data: {
+        id: body.id,
+      },
+    }).then((data) => data.data);
+  },
 };

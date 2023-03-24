@@ -124,6 +124,9 @@ function useSocket(socket) {
     socket.on("friendrecallmessage", async ({ message }) => {
       dispatch(datauserSlide.actions.updatemessage({ message }));
     });
+    socket.on("friendseenmessage", async ({ message }) => {
+      dispatch(datauserSlide.actions.updatemessage({ message }));
+    });
     return () => {
       socket.off("connect");
       socket.off("disconnect");

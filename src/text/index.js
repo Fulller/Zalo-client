@@ -67,6 +67,8 @@ export default {
       image: "Hình ảnh",
       seeall: "Xem tất cả",
       link: "Link",
+      sent: "Đã gửi",
+      seen: "Đã xem",
     },
     module: {
       cantfinduser: "Không tìm thấy người dùng",
@@ -224,6 +226,8 @@ export default {
       image: "Image",
       seeall: "See all",
       link: "Link",
+      sent: "Sent",
+      seen: "Seen",
     },
     module: {
       cantfinduser: "User not found",

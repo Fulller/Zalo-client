@@ -24,7 +24,7 @@ function MessagePopper({ className, data, friend }) {
   }, [mouseEnter]);
   return (
     <div
-      className={`${className} ${cx(["popper"])}`}
+      className={`${className} ${cx(["popper", data.isRecall && "isrecall"])}`}
       onMouseLeave={(e) => setMouseEnter(false)}
       onMouseEnter={(e) => setMouseEnter(true)}
     >
