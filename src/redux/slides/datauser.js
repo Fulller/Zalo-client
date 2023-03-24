@@ -77,15 +77,15 @@ export default createSlice({
       return state;
     },
     setFriendToFriendMap: (state, action) => {
-      state.friendsMap[action.payload.userName] = action.payload;
       for (let indexFriend in state.friends) {
         if (state.friends[indexFriend].userName == action.payload.userName) {
           state.friends[indexFriend] = action.payload;
         }
       }
+      state.friendsMap[action.payload.userName] = action.payload;
       return state;
     },
-    deleteonmyside: (state, action) => {
+    updatemessage: (state, action) => {
       for (let index in state.conversations[
         action.payload.message.conversationId
       ].messages) {

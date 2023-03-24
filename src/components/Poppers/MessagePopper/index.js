@@ -8,7 +8,7 @@ import useText from "../../../hooks/useText";
 
 const cx = classNames.bind(style);
 const cxpoper = classNames.bind(popperStyle);
-function MessagePopper({ className, data }) {
+function MessagePopper({ className, data, friend }) {
   let [visible, setVisible] = useState(false);
   let [mouseEnter, setMouseEnter] = useState(false);
   let text = useText("popper");
@@ -46,6 +46,7 @@ function MessagePopper({ className, data }) {
               setVisible={setVisible}
               title={text.recall}
               data={data}
+              friend={friend}
             ></Recall>
             <DeleteMessage
               icon

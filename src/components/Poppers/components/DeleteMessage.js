@@ -13,7 +13,7 @@ function DeleteMessage({ cx, title, icon, setVisible, data }) {
     });
     if (response.isSuccess) {
       dispatch(
-        datauserSlide.actions.deleteonmyside({
+        datauserSlide.actions.updatemessage({
           message: response.data,
         })
       );

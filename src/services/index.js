@@ -180,4 +180,14 @@ export default {
       },
     }).then((data) => data.data);
   },
+  recallmessage: function (body) {
+    return axios({
+      method: "delete",
+      url: url.server.userAPI("/recallmessage"),
+      data: {
+        id: body.id,
+        userName: body.userName,
+      },
+    }).then((data) => data.data);
+  },
 };

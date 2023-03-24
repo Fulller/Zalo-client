@@ -25,6 +25,20 @@ function Notification() {
       clearTimeout(timeout);
     };
   }, [notification.isShow]);
+  function CloseBtn() {
+    return (
+      <button
+        className={cx("close-btn")}
+        onClick={() =>
+          settingSlide.actions.setNotification({
+            isShow: false,
+          })
+        }
+      >
+        <span className={cx(["material-symbols-outlined"])}>close</span>
+      </button>
+    );
+  }
   switch (notification.type) {
     case "copy":
       return (
@@ -35,7 +49,8 @@ function Notification() {
             !notification.isShow && "hide",
           ])}
         >
-          Copy successful!
+          <h3>Copy successful!</h3>
+          <CloseBtn></CloseBtn>
         </div>
       );
     default:

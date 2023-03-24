@@ -1,31 +1,51 @@
 .notification {
   position: absolute;
   top: 12px;
-  right: 12px;
+  left: 50%;
   animation: showandhide 2s linear;
 }
 @keyframes showandhide {
   0% {
-    transform: translateX(0px);
+    transform: translateY(-100px);
   }
   25% {
-    transform: translateX(-100px);
+    transform: translateY(0px);
   }
   75% {
-    transform: translateX(-100px);
+    transform: translateY(0px);
     opacity: 1;
   }
   100% {
     opacity: 0;
-    transform: translateX(0px);
+    transform: translateY(-100px);
+  }
+}
+.close-btn {
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-left: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: all 0.3s;
+  &:hover {
+    background-color: white;
+    border-radius: 20px 0px 0px 20px;
+  }
+  span {
+    font-size: 30px;
   }
 }
 .copy {
-  background-color: rgb(143, 143, 250);
-  padding: 8px 16px;
-  color: white;
-  border-radius: 100px 0px 100px 0px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+  display: flex;
+  background-color: rgb(0, 0, 0);
+  color: rgb(132, 159, 247);
+  border-radius: 4px;
+  font-weight: 900;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+  align-items: center;
+  overflow: hidden;
+  padding: 6px;
+  padding-left: 12px;
 }
 .hide {
   display: none;

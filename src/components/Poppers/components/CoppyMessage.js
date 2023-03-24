@@ -16,12 +16,12 @@ function CoppyMessage({ cx, icon, data, setVisible }) {
         navigator.clipboard.writeText(url.server.getImage(data.content));
         break;
     }
-    dispatch(
-      settingSlide.actions.setNotification({
-        isShow: true,
-        type: "copy",
-      })
-    );
+    // dispatch(
+    //   settingSlide.actions.setNotification({
+    //     isShow: true,
+    //     type: "copy",
+    //   })
+    // );
     setVisible(false);
   }
   function getdisplay(type) {

@@ -11,7 +11,7 @@ import settingSlide from "../../../../redux/slides/setting";
 import { useMediaQuery } from "react-responsive";
 
 const cx = classNames.bind(style);
-function Messages({ data }) {
+function Messages({ data, friend }) {
   let isMobile = useMediaQuery({ query: "(max-width: 700px)" });
   let user = useSelector(selector.user);
   let dataMessages = data.data;
@@ -48,6 +48,18 @@ function Messages({ data }) {
     }
   }, [conversation]);
   function Content({ message, time }) {
+    if (message.isRecall) {
+      return (
+        <div className={cx("content")}>
+          <p className={cx([!showinfocontent && "wide", "recall"])}>
+            Tin nhắn đã được thu hồi
+          </p>
+          <div className={cx("time")}>
+            {(time[0] * 1 + 7) % 24}:{time[1]}
+          </div>
+        </div>
+      );
+    }
     switch (message.type) {
       case "message":
         return (
@@ -138,6 +150,7 @@ function Messages({ data }) {
                 <MessagePopper
                   data={message}
                   className={cx("popper")}
+                  friend={friend}
                 ></MessagePopper>
               </div>
             </div>
@@ -147,26 +160,3 @@ function Messages({ data }) {
   );
 }
 export default Messages;
-{
-  /* {message.type == "image" ? (
-                  <div className={cx("content-image")}>
-                    <Image
-                      className={cx(!showinfocontent && "wide")}
-                      src={message.content}
-                      id
-                    ></Image>
-                    <div className={cx("time")}>
-                      {(time[0] * 1 + 7) % 24}:{time[1]}
-                    </div>
-                  </div>
-                ) : (
-                  <div className={cx("content")}>
-                    <p className={cx(!showinfocontent && "wide")}>
-                      {message.content}
-                    </p>
-                    <div className={cx("time")}>
-                      {(time[0] * 1 + 7) % 24}:{time[1]}
-                    </div>
-                  </div>
-                )} */
-}

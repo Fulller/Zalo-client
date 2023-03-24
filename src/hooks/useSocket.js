@@ -121,6 +121,9 @@ function useSocket(socket) {
         dispatch(datauserSlide.actions.setFriendToFriendMap(friend.data));
       }
     });
+    socket.on("friendrecallmessage", async ({ message }) => {
+      dispatch(datauserSlide.actions.updatemessage({ message }));
+    });
     return () => {
       socket.off("connect");
       socket.off("disconnect");

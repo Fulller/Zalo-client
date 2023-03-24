@@ -26,7 +26,7 @@ function ChatFriend({ data }) {
             src={data?.data?.friend?.avatar}
             id
           ></Image>
-          <Messages data={data}></Messages>
+          <Messages data={data} friend={data?.data?.friend}></Messages>
         </div>
         <div className={cxlayout("input")}>
           <InputText data={data}></InputText>
