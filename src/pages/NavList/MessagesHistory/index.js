@@ -53,15 +53,26 @@ function MessagesHistory() {
             detailcontent?.type == "chat-friend" &&
             detailcontent?.data?.friend?.userName == friend?.userName;
           if (friend) {
+            let indexLastMessage = conversation?.messages.length - 1;
+            let lastMessage = conversation?.messages[indexLastMessage] || null;
+            while (
+              lastMessage.isRecall ||
+              lastMessage.deleteBy.find((userName) => {
+                return userName == user.userName;
+              })
+            ) {
+              if (indexLastMessage == 0) {
+                break;
+              }
+              indexLastMessage--;
+              lastMessage = conversation?.messages[indexLastMessage];
+            }
             return (
               <UserItem
                 key={friend?.userName}
                 data={friend}
                 type={3}
-                lastMessage={
-                  conversation?.messages[conversation?.messages.length - 1] ||
-                  null
-                }
+                lastMessage={lastMessage}
                 hoverMoreButton
                 active={isActive}
               ></UserItem>

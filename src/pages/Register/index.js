@@ -50,7 +50,10 @@ function Register() {
       setMessage(codeText[data.code]);
       if (data.isSuccess) {
         dispatch(userSlide.actions.setUser({ user: data.data }));
-        navigate("/message");
+        navigate("/");
+        setTimeout(() => {
+          window.location.reload();
+        }, 500);
       }
     }
   }

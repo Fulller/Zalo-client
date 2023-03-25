@@ -49,6 +49,9 @@ function Login() {
       if (data.isSuccess) {
         dispatch(userSlide.actions.setUser({ user: data.data }));
         window.location.href = "/";
+        setTimeout(() => {
+          window.location.reload();
+        }, 500);
       } else {
         setMessage(codeText[data.code]);
       }
