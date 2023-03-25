@@ -56,14 +56,12 @@ function MessagesHistory() {
             let indexLastMessage = conversation?.messages.length - 1;
             let lastMessage = conversation?.messages[indexLastMessage] || null;
             while (
-              lastMessage.isRecall ||
-              lastMessage.deleteBy.find((userName) => {
-                return userName == user.userName;
-              })
+              indexLastMessage >= 0 &&
+              (lastMessage.isRecall ||
+                lastMessage.deleteBy.find((userName) => {
+                  return userName == user.userName;
+                }))
             ) {
-              if (indexLastMessage == 0) {
-                break;
-              }
               indexLastMessage--;
               lastMessage = conversation?.messages[indexLastMessage];
             }
