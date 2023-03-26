@@ -4,20 +4,53 @@ import useText from "../../../hooks/useText";
 import Tippy from "@tippyjs/react";
 import { useState, useRef, useEffect } from "react";
 import settingSlide from "../../../redux/slides/setting";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import selector from "../../../redux/selector";
+import removeVietnameseTones from "../../../tools/removeVietnameseTones";
 
 const cx = className.bind(style);
 function SearchBox() {
+  let friends = useSelector(selector.datauser.friends);
+  let conversations = useSelector(selector.datauser.conversations);
   let dispatch = useDispatch();
   let text = useText("mainlayout");
   let [searchtext, setSearchtext] = useState("");
   let [isInputFocus, setIsInputFocus] = useState(false);
+  let [result, setResult] = useState({
+    friends: [],
+    messages: [],
+  });
   let inputRef = useRef();
   function hanldeClearSearchtext() {
     setSearchtext("");
     inputRef.current.focus();
   }
-
+  useEffect(() => {
+    dispatch(
+      settingSlide.actions.setSearchnavlist({
+        isShow: isInputFocus,
+        data: result,
+      })
+    );
+  }, [isInputFocus, result]);
+  useEffect(() => {
+    let timeoutSearch = setTimeout(() => {
+      let resultFriends = !!searchtext.trim()
+        ? friends.filter((friend) => {
+            return removeVietnameseTones(
+              friend.showName.toLowerCase()
+            ).includes(removeVietnameseTones(searchtext.toLowerCase()));
+          })
+        : [];
+      setResult({ friends: resultFriends });
+    }, 500);
+    return () => {
+      clearInterval(timeoutSearch);
+    };
+  }, [searchtext]);
+  function handleClick(e) {
+    console.log(e);
+  }
   return (
     <div className={cx("search-box")}>
       <div className={cx("search-input")}>
@@ -31,6 +64,7 @@ function SearchBox() {
           onChange={(e) => setSearchtext(e.target.value)}
           onFocus={() => setIsInputFocus(true)}
           onBlur={() => setIsInputFocus(false)}
+          type="text"
         ></input>
         <span
           className={cx([

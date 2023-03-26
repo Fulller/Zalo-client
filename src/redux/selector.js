@@ -49,4 +49,7 @@ export default {
   notification: (state) => {
     return state.setting.notification;
   },
+  searchnavlist: (state) => {
+    return state.setting.searchnavlist;
+  },
 };

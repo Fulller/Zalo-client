@@ -21,6 +21,16 @@
       overflow-y: scroll;
       overflow-x: hidden;
       border-top: 1.5px solid var(--gray-blur);
+      position: relative;
+
+      .part4-category-search {
+        background-color: blue;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        position: absolute;
+      }
 
       &::-webkit-scrollbar {
         width: 5px;

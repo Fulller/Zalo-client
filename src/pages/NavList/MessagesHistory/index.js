@@ -1,6 +1,5 @@
 import style from "./MessagesHIstory.module.scss";
 import classNames from "classnames/bind";
-import datauserSlide from "../../../redux/slides/datauser";
 import settingSlide from "../../../redux/slides/setting";
 import selector from "../../../redux/selector";
 import { useSelector, useDispatch } from "react-redux";

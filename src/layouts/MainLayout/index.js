@@ -9,15 +9,20 @@ import DetailContent from "../../pages/DetailContent";
 import { useSelector } from "react-redux";
 import selector from "../../redux/selector";
 import { useMediaQuery } from "react-responsive";
+import SearchNavList from "./SearchNavList";
+import Category from "./SearchNavList/Category";
+import { useState } from "react";
 
 const cx = classNames.bind(style);
 function MainLayout({ elements }) {
   let isMobile = useMediaQuery({ query: "(max-width: 700px)" });
+  let user = useSelector(selector.user);
   let detailcontent = useSelector(selector.detailcontent);
   let [NavList] = elements;
-  let user = useSelector(selector.user);
-  useAutoNavigate();
+  let [category, setCategory] = useState("all");
   let isshownavlist = useSelector(selector.isshownavlist);
+  let searchnavlist = useSelector(selector.searchnavlist);
+  useAutoNavigate();
   return (
     <>
       {user && (
@@ -31,7 +36,17 @@ function MainLayout({ elements }) {
                 <SearchBox></SearchBox>
               </div>
               <div className={cx("part4")}>
-                <NavList></NavList>
+                {searchnavlist.isShow && (
+                  <Category setCategory={setCategory}></Category>
+                )}
+                {searchnavlist.isShow ? (
+                  <SearchNavList
+                    data={searchnavlist.data}
+                    category={category}
+                  ></SearchNavList>
+                ) : (
+                  <NavList></NavList>
+                )}
               </div>
             </div>
           )}
