@@ -21,6 +21,7 @@ function UpdataUser({ data }) {
   let [file, setFile] = useState(null);
   let [filebg, setFilebg] = useState(null);
   let [showname, setShowname] = useState(user?.showName);
+  let [sex, setSex] = useState(data.sex || "male");
   let text = useText("module");
   function handleEnteringShowname(e) {
     if (!isUpdate) {
@@ -47,6 +48,12 @@ function UpdataUser({ data }) {
       })
     );
   }
+  function handleSelectSex(e) {
+    if (!isUpdate) {
+      setIsUpdate(true);
+    }
+    setSex(e.target.value);
+  }
   async function handleUpdateInfo() {
     if (isUpdate) {
       let avatar = user.avatar;
@@ -68,6 +75,7 @@ function UpdataUser({ data }) {
         showName: showname,
         avatar: avatar,
         background: background,
+        sex: sex,
       });
       if (response.isSuccess) {
         dispatch(
@@ -75,6 +83,7 @@ function UpdataUser({ data }) {
             avatar: avatar,
             showName: showname,
             background: background,
+            sex: sex,
           })
         );
         socket.emit("updateinfo", {
@@ -145,6 +154,34 @@ function UpdataUser({ data }) {
             value={showname}
           ></input>
           <p>{text.pleaseuserealname}</p>
+        </div>
+      </div>
+      <div className={cx("info-personal")}>
+        <h2>{text.infopersonal}</h2>
+        <div className={cx(["info-personal-item", "sex"])}>
+          <h4>{text.sex}</h4>
+          <div className={cx("input-sex")}>
+            <div className={cx("input-sex-group")}>
+              <input
+                type="radio"
+                name="sex"
+                value="male"
+                defaultChecked={sex == "male"}
+                onInput={handleSelectSex}
+              ></input>
+              <label>{text.male}</label>
+            </div>
+            <div className={cx("input-sex-group")}>
+              <input
+                type="radio"
+                name="sex"
+                value="female"
+                defaultChecked={sex == "female"}
+                onInput={handleSelectSex}
+              ></input>
+              <label>{text.female}</label>
+            </div>
+          </div>
         </div>
       </div>
       <div className={cx("buttons")}>

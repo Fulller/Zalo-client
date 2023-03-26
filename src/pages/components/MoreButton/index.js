@@ -85,7 +85,7 @@ function MoreButton({ data: { user, friend }, type = "user" }) {
                   className={cx("important")}
                   onClick={handleClickClearConverstation}
                 >
-                  Xóa cuộc hội thoại
+                  {text.clearconversation}
                 </button>
               </div>
             );

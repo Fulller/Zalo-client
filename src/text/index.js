@@ -94,6 +94,7 @@ export default {
       male: "Nam",
       female: "Nữ",
       unupdate: "Chưa cập nhật",
+      removefriend: "Xóa khỏi danh sách bạn bè",
     },
     popper: {
       watchinfo: "Xem thông tin",
@@ -109,6 +110,7 @@ export default {
       copylink: "Copy link",
       recall: "Thu hồi",
       deletemyside: "Xóa ở phía tôi",
+      clearconversation: "Xóa cuộc hội thoại",
     },
     welcome: {
       title: "Chào mừng đến với ",
@@ -255,6 +257,7 @@ export default {
       male: "Male",
       female: "Female",
       unupdate: "Not update",
+      removefriend: "Remove out friends list",
     },
     popper: {
       watchinfo: "Watch information",
@@ -270,6 +273,7 @@ export default {
       copylink: "Copy link",
       recall: "Recall",
       deletemyside: "Delete on my side",
+      clearconversation: "Clear conversation",
     },
     welcome: {
       title: "Welcome to ",

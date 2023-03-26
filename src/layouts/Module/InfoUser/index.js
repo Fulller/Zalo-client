@@ -13,6 +13,19 @@ function InfoUser({ data }) {
   let isOwner = user.userName == data?.userName;
   let text = useText("module");
   let dispatch = useDispatch();
+  function handleFeatureRemoveFriend() {
+    dispatch(
+      settingSlide.actions.setModule({
+        isShow: true,
+        type: "confirm",
+        data: {
+          type: "unfriend",
+          user: user,
+          friend: data,
+        },
+      })
+    );
+  }
   return (
     <div className={cx("infouser")}>
       <h3>{text.infoaccount}</h3>
@@ -38,6 +51,7 @@ function InfoUser({ data }) {
             <p>{data?.sex ? text[data.sex] : text.unupdate}</p>
           </div>
         </div>
+
         {isOwner && (
           <button
             className={cx("updateinfo")}
@@ -56,6 +70,14 @@ function InfoUser({ data }) {
           </button>
         )}
       </div>
+      {!isOwner && (
+        <div className={cx("features")}>
+          <button className={cx("feature")} onClick={handleFeatureRemoveFriend}>
+            <span className="material-symbols-outlined">delete</span>
+            <h4>{text.removefriend}</h4>
+          </button>
+        </div>
+      )}
     </div>
   );
 }

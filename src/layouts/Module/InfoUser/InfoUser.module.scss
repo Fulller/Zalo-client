@@ -95,4 +95,37 @@
       }
     }
   }
+  .features {
+    border-top: 5px solid rgba(0, 0, 0, 0.2);
+    width: 100%;
+
+    .feature {
+      background-color: transparent;
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      span {
+        color: rgba(0, 0, 0, 0.5);
+        padding: 0px 16px;
+      }
+      h4 {
+        padding: 16px;
+        padding-left: 0px;
+        text-align: start;
+        flex: 1;
+        font-weight: 400;
+        font-size: 14px;
+      }
+    }
+    .feature + .feature {
+      h4 {
+        border-top: 1.5px solid var(--gray-blur);
+      }
+    }
+  }
 }

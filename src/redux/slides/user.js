@@ -19,6 +19,7 @@ export default createSlice({
       state.avatar = action.payload.avatar;
       state.showName = action.payload.showName;
       state.background = action.payload.background;
+      state.sex = action.payload.sex;
       LocalStorare.set("user", state);
       return state;
     },
