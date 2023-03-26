@@ -113,7 +113,7 @@ function Messages({ data, friend }) {
         );
       case "link":
         return (
-          <div className={cx("content")}>
+          <div className={cx("content")} onClick={() => console.log("oker")}>
             <a href={message.content} target="_blank">
               <p className={cx(!showinfocontent && "wide")}>
                 {message.content}

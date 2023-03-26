@@ -81,7 +81,7 @@ function Welcome() {
             className={cx("slide-button-next")}
             onClick={() => handleChangeSlide("next")}
           >
-            <span class="material-symbols-rounded">arrow_forward_ios</span>
+            <span className="material-symbols-rounded">arrow_forward_ios</span>
           </button>
         </div>
       </div>

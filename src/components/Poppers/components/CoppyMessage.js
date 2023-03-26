@@ -38,7 +38,7 @@ function CoppyMessage({ cx, icon, data, setVisible }) {
     <div className={cx(["popper-item"])} onClick={handleCopyMessage}>
       {icon && (
         <button className={cx("icon")}>
-          <span class="material-symbols-rounded">
+          <span className="material-symbols-rounded">
             {getdisplay(data.type).icon}
           </span>
         </button>
