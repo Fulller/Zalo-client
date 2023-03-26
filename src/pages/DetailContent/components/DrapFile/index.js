@@ -1,16 +1,16 @@
 import classNames from "classnames/bind";
 import style from "./DrapFile.module.scss";
-import { useState } from "react";
-import { useDropzone } from "react-dropzone";
+import useText from "../../../../hooks/useText";
 
 const cx = classNames.bind(style);
 function DrapFile({ data: { getInputProps, isDragActive } }) {
+  let text = useText("detailcontent");
   return (
     <div className={cx(["drap-file", !isDragActive && "hide"])}>
       <div className={cx("drap-box")}>
         <input {...getInputProps()}></input>
-        <h1>Gửi nhanh</h1>
-        <p>Thả ảnh vào đây để gửi ngay</p>
+        <h1>{text.sendfast}</h1>
+        <p>{text.dropithere}</p>
       </div>
     </div>
   );

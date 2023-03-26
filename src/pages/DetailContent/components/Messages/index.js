@@ -34,9 +34,12 @@ function Messages({ data, friend }) {
     }) || null;
   let messagesRef = useRef();
   useEffect(() => {
-    setTimeout(() => {
+    let timeout = setTimeout(() => {
       messagesRef.current.scrollTop = messagesRef.current.scrollHeight;
     }, 500);
+    return () => {
+      clearTimeout(timeout);
+    };
   }, []);
   useEffect(() => {
     messagesRef.current.scrollTop = messagesRef.current.scrollHeight;

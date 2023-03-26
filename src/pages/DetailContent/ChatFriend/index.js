@@ -44,7 +44,11 @@ function ChatFriend({ data }) {
     }
   }
   let { getRootProps, getInputProps, isDragActive } = useDropzone({
-    accept: "image/*",
+    accept: {
+      "image/png": [".png"],
+      "image/jpg": [".jpg"],
+      "image/jpeg": [".jpeg"],
+    },
     onDrop: async (acceptedFiles) => {
       sendImage(acceptedFiles[0]);
     },

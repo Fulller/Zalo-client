@@ -41,6 +41,7 @@
         overflow: hidden;
         line-height: 30px;
         display: -webkit-box;
+        text-align: start;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
       }
@@ -49,6 +50,7 @@
         color: rgb(151, 147, 147);
         font-size: 14px;
         max-width: 140px;
+        text-align: start;
 
         overflow: hidden;
         display: -webkit-box;

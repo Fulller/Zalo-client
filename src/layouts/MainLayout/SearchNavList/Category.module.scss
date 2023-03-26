@@ -4,5 +4,24 @@
   left: 0;
   right: 0;
   width: 100%;
-  background-color: blue;
+  padding: 0px 24px;
+  z-index: 2;
+  border-bottom: 1.5px solid var(--gray-blur);
+  background-color: white;
+
+  button {
+    background-color: transparent;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.5);
+    padding: 8px 0px;
+    transition: all 0.2s;
+    border-bottom: 2px solid transparent;
+  }
+  button + button {
+    margin-left: 12px;
+  }
+  .active {
+    color: rgba(0, 0, 255, 0.7);
+    border-bottom: 2px solid rgba(0, 0, 255, 0.7);
+  }
 }

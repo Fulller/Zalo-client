@@ -6,16 +6,18 @@ import { useState, useRef, useEffect } from "react";
 import settingSlide from "../../../redux/slides/setting";
 import { useDispatch, useSelector } from "react-redux";
 import selector from "../../../redux/selector";
+import mergeUserName from "../../../tools/mergeUserName";
 import removeVietnameseTones from "../../../tools/removeVietnameseTones";
 
 const cx = className.bind(style);
 function SearchBox() {
+  let user = useSelector(selector.user);
   let friends = useSelector(selector.datauser.friends);
   let conversations = useSelector(selector.datauser.conversations);
   let dispatch = useDispatch();
   let text = useText("mainlayout");
   let [searchtext, setSearchtext] = useState("");
-  let [isInputFocus, setIsInputFocus] = useState(false);
+  let isInputFocus = useRef(false);
   let [result, setResult] = useState({
     friends: [],
     messages: [],
@@ -28,12 +30,17 @@ function SearchBox() {
   useEffect(() => {
     dispatch(
       settingSlide.actions.setSearchnavlist({
-        isShow: isInputFocus,
+        isShow: isInputFocus.current,
         data: result,
       })
     );
-  }, [isInputFocus, result]);
+  }, [result]);
   useEffect(() => {
+    if (!!searchtext.trim()) {
+      isInputFocus.current = true;
+    } else {
+      isInputFocus.current = false;
+    }
     let timeoutSearch = setTimeout(() => {
       let resultFriends = !!searchtext.trim()
         ? friends.filter((friend) => {
@@ -42,15 +49,29 @@ function SearchBox() {
             ).includes(removeVietnameseTones(searchtext.toLowerCase()));
           })
         : [];
-      setResult({ friends: resultFriends });
+
+      let allmessages = friends.reduce((old, friend) => {
+        let conversation =
+          conversations[mergeUserName(user.userName, friend.userName)];
+        return [...old, ...conversation.messages];
+      }, []);
+      let resultMessages = !!searchtext.trim()
+        ? allmessages.filter((message) => {
+            return (
+              removeVietnameseTones(message.content.toLowerCase()).includes(
+                removeVietnameseTones(searchtext.toLowerCase())
+              ) &&
+              !message.isRecall &&
+              !message.deleteBy.includes(user.userName)
+            );
+          })
+        : [];
+      setResult({ friends: resultFriends, messages: resultMessages });
     }, 500);
     return () => {
       clearInterval(timeoutSearch);
     };
   }, [searchtext]);
-  function handleClick(e) {
-    console.log(e);
-  }
   return (
     <div className={cx("search-box")}>
       <div className={cx("search-input")}>
@@ -61,10 +82,12 @@ function SearchBox() {
           ref={inputRef}
           placeholder={text.search}
           value={searchtext}
-          onChange={(e) => setSearchtext(e.target.value)}
-          onFocus={() => setIsInputFocus(true)}
-          onBlur={() => setIsInputFocus(false)}
+          spellCheck={false}
+          onChange={(e) => setSearchtext(e.target.value.trim())}
+          onFocus={() => (isInputFocus.current = true)}
+          onBlur={() => (isInputFocus.current = false)}
           type="text"
+          onClick={(e) => e.preventDefault()}
         ></input>
         <span
           className={cx([
@@ -77,7 +100,7 @@ function SearchBox() {
           cancel
         </span>
       </div>
-      <div className={cx(["adds", isInputFocus && "hide"])}>
+      <div className={cx(["adds", isInputFocus.current && "hide"])}>
         <Tippy delay={[500, 0]} content={<span>{text.addfriend}</span>}>
           <button
             className={cx("add-friend")}
@@ -105,7 +128,7 @@ function SearchBox() {
         </Tippy> */}
       </div>
       <div
-        className={cx(["closebtn", !isInputFocus && "hide"])}
+        className={cx(["closebtn", !isInputFocus.current && "hide"])}
         onClick={() => setSearchtext("")}
       >
         {text.close}

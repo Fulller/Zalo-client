@@ -17,7 +17,6 @@ const cx = classNames.bind(style);
 function MainLayout({ elements }) {
   let isMobile = useMediaQuery({ query: "(max-width: 700px)" });
   let user = useSelector(selector.user);
-  let detailcontent = useSelector(selector.detailcontent);
   let [NavList] = elements;
   let [category, setCategory] = useState("all");
   let isshownavlist = useSelector(selector.isshownavlist);
@@ -37,12 +36,16 @@ function MainLayout({ elements }) {
               </div>
               <div className={cx("part4")}>
                 {searchnavlist.isShow && (
-                  <Category setCategory={setCategory}></Category>
+                  <Category
+                    setCategory={setCategory}
+                    currentCategory={category}
+                  ></Category>
                 )}
                 {searchnavlist.isShow ? (
                   <SearchNavList
                     data={searchnavlist.data}
                     category={category}
+                    setCategory={setCategory}
                   ></SearchNavList>
                 ) : (
                   <NavList></NavList>

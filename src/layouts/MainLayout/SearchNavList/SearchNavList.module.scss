@@ -1,6 +1,29 @@
 .search-nav-list {
-  background-color: red;
-  margin-top: 50px;
+  margin-top: 32px;
+
+  .friends,
+  .messages {
+    padding: 8px 0px;
+    border-bottom: 6px solid rgba(0, 0, 0, 0.1);
+    text-align: center;
+
+    h5 {
+      padding: 8px 16px;
+      text-align: start;
+    }
+    .seeall {
+      width: calc(100% - 16px);
+      padding: 8px;
+      font-weight: 500;
+      font-size: 16px;
+      border-radius: 4px;
+      margin-top: 12px;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
 }
 .hide {
   display: none;

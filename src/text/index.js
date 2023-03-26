@@ -51,6 +51,9 @@ export default {
       listgroup: "Danh sách nhóm",
       requestfriend: "Lời mời kết bạn",
       waitingagree: "Đã gửi lời mời",
+      all: "Tất cả",
+      conversation: "Trò truyện",
+      message: "Tin nhắn",
     },
     detailcontent: {
       waitingagree: "Đã gửi lời mời",
@@ -69,6 +72,8 @@ export default {
       link: "Link",
       sent: "Đã gửi",
       seen: "Đã xem",
+      sendfast: "Gửi nhanh",
+      dropithere: "Thả ảnh vào đây để gửi ngay",
     },
     module: {
       cantfinduser: "Không tìm thấy người dùng",
@@ -212,6 +217,9 @@ export default {
       listgroup: "Group list",
       requestfriend: "Friend request",
       waitingagree: "Invitation sent",
+      all: "All",
+      conversation: "Conversation",
+      message: "Message",
     },
     detailcontent: {
       waitingagree: "Invitation sent",
@@ -230,6 +238,8 @@ export default {
       link: "Link",
       sent: "Sent",
       seen: "Seen",
+      sendfast: "Send fast",
+      dropithere: "Drop photos here to send",
     },
     module: {
       cantfinduser: "User not found",
