@@ -49,6 +49,7 @@ function ChatFriend({ data }) {
       "image/jpg": [".jpg"],
       "image/jpeg": [".jpeg"],
       "image/gif": [".gif"],
+      "image/jfif": [".jfif"],
     },
     onDrop: async (acceptedFiles) => {
       sendImage(acceptedFiles[0]);
