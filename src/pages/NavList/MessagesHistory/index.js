@@ -73,6 +73,7 @@ function MessagesHistory() {
                 lastMessage={lastMessage}
                 hoverMoreButton
                 active={isActive}
+                typeMoreBtn={"conversation"}
               ></UserItem>
             );
           }

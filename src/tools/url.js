@@ -9,6 +9,9 @@ export default {
     imageAPI: function (url) {
       return serverurl + "/api/image" + url;
     },
+    messageAPI: function (url) {
+      return serverurl + "/api/message" + url;
+    },
     getImage: function (id) {
       return serverurl + "/api/image/get?id=" + id;
     },

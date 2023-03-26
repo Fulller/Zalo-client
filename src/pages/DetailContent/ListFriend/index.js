@@ -12,7 +12,9 @@ const cx = classnames.bind(style);
 function ListFriend() {
   let text = useText("navlist");
   let data = useSelector(selector.datauser.friends);
-
+  let newdata = [...data].sort((a, b) =>
+    a.showName > b.showName ? 1 : a.showName < b.showName ? -1 : 0
+  );
   return (
     <div className={cxlayout("layout1")}>
       <header>
@@ -21,7 +23,7 @@ function ListFriend() {
       </header>
       <div className={cxlayout("main")}>
         <div className={cx("list-friend")}>
-          {data.map((friend, index) => {
+          {newdata.map((friend, index) => {
             return (
               <UserItem
                 key={friend.userName}

@@ -152,7 +152,7 @@ export default {
   sendmessageV2: function (body) {
     return axios({
       method: "post",
-      url: url.server.userAPI("/sendmessageV2"),
+      url: url.server.messageAPI("/sendmessageV2"),
       data: {
         conversationId: body.conversationId,
         content: body.content,
@@ -164,7 +164,7 @@ export default {
   getmessageV2: function (body) {
     return axios({
       method: "get",
-      url: url.server.userAPI("/getmessageV2"),
+      url: url.server.messageAPI("/getmessageV2"),
       params: {
         conversationId: body.conversationId,
       },
@@ -173,7 +173,7 @@ export default {
   deletemessageonmyside: function (body) {
     return axios({
       method: "delete",
-      url: url.server.userAPI("/deletemessageonmyside"),
+      url: url.server.messageAPI("/deletemessageonmyside"),
       data: {
         id: body.id,
         userName: body.userName,
@@ -183,7 +183,7 @@ export default {
   recallmessage: function (body) {
     return axios({
       method: "delete",
-      url: url.server.userAPI("/recallmessage"),
+      url: url.server.messageAPI("/recallmessage"),
       data: {
         id: body.id,
         userName: body.userName,
@@ -193,9 +193,19 @@ export default {
   seenmessage: function (body) {
     return axios({
       method: "put",
-      url: url.server.userAPI("/seenmessage"),
+      url: url.server.messageAPI("/seenmessage"),
       data: {
         id: body.id,
+      },
+    }).then((data) => data.data);
+  },
+  clearconversation: function (body) {
+    return axios({
+      method: "put",
+      url: url.server.messageAPI("/clearconversation"),
+      data: {
+        userName: body.userName,
+        conversationId: body.conversationId,
       },
     }).then((data) => data.data);
   },

@@ -77,6 +77,9 @@ function Messages({ data, friend }) {
     }
   }, [conversation?.messages]);
   function Content({ message, time, index }) {
+    let hour = time.getHours();
+    let minute = time.getMinutes();
+    time = `${hour}:${minute < 10 ? "0" + minute : minute}`;
     function TimeAndStatus() {
       return (
         <div className={cx("time-and-status")}>
@@ -149,8 +152,7 @@ function Messages({ data, friend }) {
         conversation.messages.map((message, index) => {
           let sender = friendsMap[message?.sender];
           let avatar = sender?.avatar;
-          let timeOriginal = new Date(message.createdAt);
-          let time = `${timeOriginal.getHours()}:${timeOriginal.getMinutes()}`;
+          let time = new Date(message.createdAt);
           let messageType = [];
           if (message.sender != conversation.messages[index - 1]?.sender) {
             messageType.push("type1");

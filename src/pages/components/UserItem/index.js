@@ -23,6 +23,7 @@ function UserItem({
   hoverMoreButton = false,
   lastMessage = null,
   active,
+  typeMoreBtn = "user",
 }) {
   let text = useText("detailcontent");
   let relationship = useRelationship(data.userName);
@@ -158,6 +159,7 @@ function UserItem({
               user: user,
               friend: data,
             }}
+            type={typeMoreBtn}
           ></MoreButton>
         )}
         {hoverMoreButton && (
@@ -167,6 +169,7 @@ function UserItem({
                 user: user,
                 friend: data,
               }}
+              type={typeMoreBtn}
             ></MoreButton>
           </div>
         )}

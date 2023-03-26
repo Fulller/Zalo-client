@@ -160,6 +160,10 @@
           .status {
             display: block;
           }
+          .time,
+          .status {
+            color: rgba(0, 0, 0, 0.7);
+          }
         }
       }
     }
