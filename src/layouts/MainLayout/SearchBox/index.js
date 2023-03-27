@@ -67,7 +67,7 @@ function SearchBox() {
           })
         : [];
       setResult({ friends: resultFriends, messages: resultMessages });
-    }, 500);
+    }, 800);
     return () => {
       clearInterval(timeoutSearch);
     };

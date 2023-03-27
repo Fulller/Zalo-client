@@ -74,6 +74,8 @@ export default {
       seen: "Đã xem",
       sendfast: "Gửi nhanh",
       dropithere: "Thả ảnh vào đây để gửi ngay",
+      letstartshareing:
+        "Hãy bắt đầu cùng nhau chia sẻ những khoảnh khắc trong cuộc sống",
     },
     module: {
       cantfinduser: "Không tìm thấy người dùng",
@@ -240,6 +242,7 @@ export default {
       seen: "Seen",
       sendfast: "Send fast",
       dropithere: "Drop photos here to send",
+      letstartshareing: "Let's start sharing life's moments together",
     },
     module: {
       cantfinduser: "User not found",

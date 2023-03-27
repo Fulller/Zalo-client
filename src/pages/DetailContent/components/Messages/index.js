@@ -1,6 +1,6 @@
 import style from "./Messages.module.scss";
 import classNames from "classnames/bind";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, memo } from "react";
 import mergeUserName from "../../../../tools/mergeUserName";
 import { useSelector, useDispatch } from "react-redux";
 import selector from "../../../../redux/selector";
@@ -12,6 +12,7 @@ import { useMediaQuery } from "react-responsive";
 import useText from "../../../../hooks/useText";
 import services from "../../../../services";
 import datauserSlide from "../../../../redux/slides/datauser";
+import Background from "../../../../layouts/Module/components/Background";
 import { socket } from "../../../../components/Global";
 
 const cx = classNames.bind(style);
@@ -24,6 +25,7 @@ function Messages({ data, friend }) {
   let friendsMap = useSelector(selector.datauser.friendsMap);
   let showinfocontent = useSelector(selector.showinfocontent);
   let [photos, setPhotos] = useState([]);
+  let [hasMessage, setHasMessage] = useState(true);
   let conversationId =
     data.type == "chat-friend"
       ? mergeUserName(dataMessages.user.userName, dataMessages.friend.userName)
@@ -78,6 +80,12 @@ function Messages({ data, friend }) {
         })();
       }
     }
+    setHasMessage(
+      conversation?.messages.some(
+        (message) =>
+          !message.deleteBy.some((userName) => userName == user.userName)
+      )
+    );
   }, [conversation?.messages]);
   function Content({ message, time, index }) {
     let hour = time.getHours();
@@ -149,9 +157,29 @@ function Messages({ data, friend }) {
         );
     }
   }
+  function NoMessage({ friend }) {
+    return (
+      <div className={cx("no-message")}>
+        <div className={cx("header")}>
+          <Avatar data={friend}>
+            <Image src={friend.avatar} id className={cx("avatar")}></Image>
+          </Avatar>
+          <div className={cx("info")}>
+            <h4>{friend.showName}</h4>
+            <p>{text.letstartshareing}</p>
+          </div>
+        </div>
+        <Background
+          src={friend.background}
+          id
+          className={cx("background")}
+        ></Background>
+      </div>
+    );
+  }
   return (
     <div className={cx("messages")} ref={messagesRef}>
-      {conversation &&
+      {conversation && hasMessage ? (
         conversation.messages.map((message, index) => {
           let sender = friendsMap[message?.sender];
           let avatar = sender?.avatar;
@@ -192,7 +220,10 @@ function Messages({ data, friend }) {
               </div>
             </div>
           );
-        })}
+        })
+      ) : (
+        <NoMessage friend={friend}></NoMessage>
+      )}
     </div>
   );
 }

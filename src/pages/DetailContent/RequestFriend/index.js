@@ -25,6 +25,7 @@ function RequestFriend() {
       dispatch(datauserSlide.actions.addFriend(friend));
     }
   }
+  function NoFriend(title = "") {}
   return (
     <div className={cxlayout("layout1")}>
       <header>
